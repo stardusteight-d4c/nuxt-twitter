@@ -14,11 +14,56 @@ const { defaultTransition } = useTailwindConfig()
         </div>
       </nuxt-link>
     </div>
-    <SidebarLeftTab>
-      <template v-slot:icon>
-        <IconHome class="w-8 h-8" />
-      </template>
-      <template v-slot:name> Home </template>
-    </SidebarLeftTab>
+
+    <div class="mt-1 space-y-1">
+      <SidebarLeftTab active>
+        <template v-slot:icon>
+          <IconHome />
+        </template>
+        <template v-slot:name> Home </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconHashtag />
+        </template>
+        <template v-slot:name> Explore </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconBell />
+        </template>
+        <template v-slot:name> Notifications </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconInbox />
+        </template>
+        <template v-slot:name> Messages </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconBookmark />
+        </template>
+        <template v-slot:name> Bookmarks </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconDocumentText />
+        </template>
+        <template v-slot:name> Lists </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconUser />
+        </template>
+        <template v-slot:name> Profile </template>
+      </SidebarLeftTab>
+      <SidebarLeftTab :active="false">
+        <template v-slot:icon>
+          <IconEllipsisHorizontalCircle />
+        </template>
+        <template v-slot:name> More </template>
+      </SidebarLeftTab>
+    </div>
   </div>
 </template>

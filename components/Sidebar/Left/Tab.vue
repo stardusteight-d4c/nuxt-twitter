@@ -1,11 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+interface IProps {
+  active: boolean
+}
+const props = defineProps<IProps>()
+
+const { defaultTransition } = useTailwindConfig()
+const textClasses = computed(() =>
+  props.active ? "font-semibold" : "font-normal"
+)
+</script>
 
 <template>
-  <next-link to="#">
-    <div>
+  <next-link
+    to="#"
+    class="flex items-center py-2 px-3 w-min hover:bg-gray-200 dark:hover:bg-dim-200 text-black dark:text-white rounded-full cursor-pointer"
+    :class="defaultTransition"
+  >
+    <div class="w-6 h-6" :class="defaultTransition">
       <slot name="icon"></slot>
     </div>
-    <div>
+    <div class="ml-4 text-xl hidden xl:block" :class="textClasses">
       <slot name="name"></slot>
     </div>
   </next-link>
