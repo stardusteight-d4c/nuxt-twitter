@@ -18,8 +18,7 @@ const { twitterBorderColor, defaultTransition } = useTailwindConfig()
     </h1>
     <slot></slot>
     <div
-      class="p-3 text-sm text-blue-400 cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-dim-300"
-      :class="defaultTransition"
+      :class="`${defaultTransition} p-3 text-sm text-blue-400 cursor-pointer hover:bg-fuchsia-50 dark:hover:bg-dim-300`"
     >
       Show more
     </div>
