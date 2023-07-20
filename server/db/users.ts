@@ -9,6 +9,11 @@ export interface User {
   profileImage: string
 }
 
+export interface Login {
+  username: string
+  password: string
+}
+
 export const createUser = async (input: User) => {
   const handledInput = {
     ...input,
@@ -16,5 +21,13 @@ export const createUser = async (input: User) => {
   }
   return await prisma.user.create({
     data: handledInput,
+  })
+}
+
+export const getUserByUsername = async (input: string) => {
+  return prisma.user.findUnique({
+    where: {
+      username: input,
+    },
   })
 }

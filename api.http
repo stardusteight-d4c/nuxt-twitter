@@ -9,3 +9,11 @@ Content-Type: application/json
   "profileImage": "https://i.pinimg.com/originals/19/72/77/1972776241251a3cea9fef51742a2b8f.jpg"
 }
 ###
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "notzelda",
+  "password": "password123"
+}
+###
