@@ -1,0 +1,11 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Link",
+  "username": "notzelda",
+  "password": "password123",
+  "email": "notzelda@gmail.com",
+  "profileImage": "https://i.pinimg.com/originals/19/72/77/1972776241251a3cea9fef51742a2b8f.jpg"
+}
+###
