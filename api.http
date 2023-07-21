@@ -17,3 +17,8 @@ Content-Type: application/json
   "password": "password123"
 }
 ###
+GET http://localhost:3000/api/auth/refresh
+Cookie: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGJhY2VmMzk1YmEzZDFhMTQ3OGUxMDMiLCJpYXQiOjE2ODk5NjUxNjksImV4cCI6MTY4OTk3OTU2OX0.2dpC2ONoT_fvL30aWjTzPFZwnnRsOkUqCmEZalAOndU
+###
+GET http://localhost:3000/api/auth/user
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGJhY2VmMzk1YmEzZDFhMTQ3OGUxMDMiLCJpYXQiOjE2ODk5NzA1ODMsImV4cCI6MTY4OTk3MTE4M30.tAzQMf2IJNkA3KH8js8ajY4aKlUsfHr1zFSsecN_UMU
