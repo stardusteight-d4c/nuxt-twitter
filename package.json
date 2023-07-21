@@ -22,6 +22,7 @@
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@prisma/client": "^5.0.0",
+    "@tailwindcss/forms": "^0.5.4",
     "bcrypt": "^5.1.0",
     "jsonwebtoken": "^9.0.1"
   }
