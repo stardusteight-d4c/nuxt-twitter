@@ -21,6 +21,29 @@ interface IFiles {
   ]
 }
 
+interface CloudinaryResource {
+  asset_id: string
+  public_id: string
+  version: number
+  version_id: string
+  signature: string
+  width: number
+  height: number
+  format: string
+  resource_type: string
+  created_at: string
+  tags: string[]
+  bytes: number
+  type: string
+  etag: string
+  placeholder: boolean
+  url: string
+  secure_url: string
+  folder: string
+  original_filename: string
+  api_key: string
+}
+
 export default defineEventHandler(async (event) => {
   const form = formidable({})
 
@@ -49,14 +72,15 @@ export default defineEventHandler(async (event) => {
 
   const filePromises = Object.keys(files).map(async (key) => {
     const file = files[key][0]
-    const response = await uploadToCloudnary(file.filepath)
+    const cloudinaryResource: CloudinaryResource = (await uploadToCloudnary(
+      file.filepath
+    )) as any
 
+    console.log(response)
 
-    console.log(response);
-    
     return await createMediaFile({
-      url: "",
-      providerPublicId: "random_id",
+      url: cloudinaryResource.secure_url,
+      providerPublicId: cloudinaryResource.public_id,
       userId,
       tweetId: tweet.id,
     })
@@ -65,7 +89,6 @@ export default defineEventHandler(async (event) => {
   await Promise.all(filePromises)
 
   return {
-    // tweet: tweetTransformer(tweet),
-    files,
+    tweet: tweetTransformer(tweet),
   }
 })
