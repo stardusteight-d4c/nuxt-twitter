@@ -6,10 +6,24 @@ const props = defineProps<Props>()
 const emits = defineEmits(["onSubmit"])
 
 const text = ref("")
+const imageInput = ref()
+const selectedFile = ref<File | null>(null)
+
+function handleImageClick() {
+  imageInput.value.click()
+}
+
+function handleImageChange(event: Event) {
+  const inputElement = event.target! as HTMLInputElement
+
+  const file = inputElement.files![0]
+  selectedFile.value = file
+}
 
 function handleFormSubmit() {
   emits("onSubmit", {
     text: text.value,
+    mediaFiles: [selectedFile.value],
   })
 }
 </script>
@@ -31,6 +45,58 @@ function handleFormSubmit() {
         />
       </div>
     </div>
+    <!-- fie selector -->
+    <div class="p-4 pl-16">
+      <input
+        type="file"
+        ref="imageInput"
+        accept="image/png, image/gif, image/jpeg"
+        hidden
+        @change="handleImageChange"
+      />
+    </div>
+
+    <!-- icons -->
+    <div class="flex items-center">
+      <div class="flex p-2 pl-16">
+        <div
+          @click="handleImageClick"
+          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+        >
+          <IconImage />
+        </div>
+      </div>
+      <div class="flex p-2 pl-4">
+        <div
+          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+        >
+          <IconGif />
+        </div>
+      </div>
+
+      <div class="flex p-2 pl-4">
+        <div
+          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+        >
+          <IconChart />
+        </div>
+      </div>
+      <div class="flex p-2 pl-4">
+        <div
+          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+        >
+          <IconEmoji />
+        </div>
+      </div>
+      <div class="flex p-2 pl-4">
+        <div
+          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+        >
+          <IconCalendar />
+        </div>
+      </div>
+    </div>
+
     <div>
       <button @click="handleFormSubmit">Tweet</button>
     </div>
