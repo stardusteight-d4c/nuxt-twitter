@@ -12,7 +12,6 @@ const selectedFile = ref<File | null>(null)
 let inputImageUrl = ref<string | null>(null)
 const isDisable = computed(() => text.value === "")
 
-
 function handleImageClick() {
   imageInput.value.click()
 }
@@ -37,30 +36,30 @@ function handleFormSubmit() {
 }
 
 const data = {
-  isDisable
+  isDisable,
 }
 </script>
 
 <template>
   <div>
-    <div class="flex items-center flex-shrink-0 p-4 pb-0">
+    <div class="flex items-start flex-shrink-0 p-4 pb-0">
       <div class="flex w-12 items-start">
         <img
           :src="props.user.profileImage"
           alt=""
-          class="inline-block w-10 h-10 rounded-full"
+          class="inline-block mt-2 w-10 h-10 rounded-full"
         />
       </div>
       <div class="w-full p-2">
         <textarea
           v-model="text"
           placeholder="What's happening?"
-          class="w-full h-10 text-lg text-gray-900 placeholder:text-gray-400 bg-transparent border-0 dark:text-white focus:ring-0"
+          :class="`${twitterBorderColor} focus:!border-blue-400 rounded-xl w-full min-h-[125px] p-2 text-lg resize-none outline-none text-gray-900 placeholder:text-gray-400 bg-transparent border dark:text-white focus:ring-0`"
         />
       </div>
     </div>
     <!-- fie selector -->
-    <div class="p-4 pl-16">
+    <div :class="`${inputImageUrl ? 'block' : 'hidden'} p-4 pl-16`">
       <img
         :src="inputImageUrl"
         v-if="inputImageUrl"
@@ -118,7 +117,11 @@ const data = {
       </div>
 
       <div>
-        <UIButton size="lg" :disable="(data.isDisable as any)" @click="handleFormSubmit">
+        <UIButton
+          size="lg"
+          :disable="(data.isDisable as any)"
+          @click="handleFormSubmit"
+        >
           Tweet
         </UIButton>
       </div>
