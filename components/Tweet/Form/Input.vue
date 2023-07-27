@@ -4,10 +4,12 @@ interface Props {
 }
 const props = defineProps<Props>()
 const emits = defineEmits(["onSubmit"])
+const { twitterBorderColor } = useTailwindConfig()
 
 const text = ref("")
 const imageInput = ref()
 const selectedFile = ref<File | null>(null)
+let inputImageUrl = ref<string | null>(null)
 
 function handleImageClick() {
   imageInput.value.click()
@@ -18,6 +20,11 @@ function handleImageChange(event: Event) {
 
   const file = inputElement.files![0]
   selectedFile.value = file
+  const reader = new FileReader()
+  reader.onload = (event) => {
+    inputImageUrl.value = event!.target!.result! as string
+  }
+  reader.readAsDataURL(file)
 }
 
 function handleFormSubmit() {
@@ -41,12 +48,18 @@ function handleFormSubmit() {
       <div class="w-full p-2">
         <textarea
           v-model="text"
+          placeholder="What's happening?"
           class="w-full h-10 text-lg text-gray-900 placeholder:text-gray-400 bg-transparent border-0 dark:text-white focus:ring-0"
         />
       </div>
     </div>
     <!-- fie selector -->
     <div class="p-4 pl-16">
+      <img
+        :src="inputImageUrl"
+        v-if="inputImageUrl"
+        :class="`${twitterBorderColor} rounded-2xl border`"
+      />
       <input
         type="file"
         ref="imageInput"
