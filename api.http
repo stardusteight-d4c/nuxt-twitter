@@ -26,4 +26,14 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGJhY2VmMzk1
 
 ### api/user/tweets
 POST http://localhost:3000/api/user/tweets
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGMwM2VjNWY4ZjdlYTg1MDgwMThjZTgiLCJpYXQiOjE2OTAzNzczNTksImV4cCI6MTY5MDM3Nzk1OX0.1AlcvGe6eDz6wNEqRSR1DzZskQUkJR7O13neMJ7eVMM
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGMyNTMzOTBlNjYxMmU3Yzc1MWM4YmIiLCJpYXQiOjE2OTA0ODM4MjksImV4cCI6MTY5MDQ4NDQyOX0.5vDRlEj6AKHaZZHbeWlSpmf5WChvbm68jPLn5JNhxGM
+Content-Type: "multipart/form-data"
+
+{
+  "text": "Resposta",
+  "replyTo": "64c259470e6612e7c751c8bd"
+}
+
+### api/tweets
+GET http://localhost:3000/api/tweets
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGMyNTMzOTBlNjYxMmU3Yzc1MWM4YmIiLCJpYXQiOjE2OTA0ODQ2NDksImV4cCI6MTY5MDQ4NTI0OX0.t5h5UsTmNrDMEUJ7QQJ-ppqwbXmKpuwjio8bJH8TFsI

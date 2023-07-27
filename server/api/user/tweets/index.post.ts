@@ -63,9 +63,16 @@ export default defineEventHandler(async (event) => {
 
   const userId = event.context?.auth?.user?.id
 
-  const tweetData = {
+  let tweetData: any = {
     text: fields.text[0],
     authorId: userId,
+  }
+
+  const replyTo = fields.replyTo[0]
+
+
+  if (replyTo && replyTo !== 'null') {
+    tweetData.replyToId = replyTo
   }
 
   const tweet = await createTweet(tweetData)
@@ -76,7 +83,6 @@ export default defineEventHandler(async (event) => {
       file.filepath
     )) as any
 
-    console.log(response)
 
     return await createMediaFile({
       url: cloudinaryResource.secure_url,
