@@ -2,16 +2,18 @@
 interface Props {
   disable?: boolean
   size?: "sm" | "md" | "lg"
-  // liquid: boolean
+  liquid?: boolean
+  type?: "icon" | "text"
 }
 
 const props = defineProps<Props>()
 const disable = props.disable ?? false
 const size = props.size ?? "md"
-// const liquid = props.liquid ?? false
+const liquid = props.liquid ?? false
+const type = props.type ?? "text"
 
 const paddingStyles = computed(() => {
-  switch (props.size) {
+  switch (size) {
     case "sm":
       return "px-3 py-2"
     case "md":
@@ -21,23 +23,36 @@ const paddingStyles = computed(() => {
   }
 })
 
-const fontSizeStyles = computed(() => {
-  switch (props.size) {
+const textStyles = computed(() => {
+  switch (size) {
     case "sm":
-      return "text-base"
+      return "text-base font-medium"
     case "md":
-      return "text-base"
+      return "text-base font-semibold"
     case "lg":
-      return "text-md"
+      return "text-md font-bold"
   }
 })
 
-const styles = computed(() => `${paddingStyles.value} ${fontSizeStyles.value}`)
+const widthStyles = computed(() => {
+  switch (liquid) {
+    case false:
+      return "w-fit"
+    case true:
+      return "w-full"
+  }
+})
+
+const styles = computed(
+  () => `${paddingStyles.value} ${textStyles.value} ${widthStyles.value}`
+)
 </script>
 
 <template>
   <button
-    :class="`${styles} flex justify-center text-white bg-blue-400 rounded-full hover:bg-blue-500 font-sm disabled:bg-blue-300 disabled:cursor-not-allowed`"
+    :class="`${
+      type === 'text' && styles
+    } flex justify-center text-white bg-blue-400 rounded-full hover:bg-blue-500 font-sm disabled:bg-blue-400 disabled:opacity-80 disabled:cursor-not-allowed`"
     :disabled="disable"
   >
     <span>

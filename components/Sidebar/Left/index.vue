@@ -64,6 +64,17 @@ const { defaultTransition } = useTailwindConfig()
         </template>
         <template v-slot:name> More </template>
       </SidebarLeftTab>
+
+      <div class="hidden xl:block">
+        <UIButton size="lg" liquid> Tweet </UIButton>
+      </div>
+      <div class="block xl:hidden w-fit px-3">
+        <UIButton type="icon">
+          <div class="w-6 h-6 p-1 font-bold">
+            <LogoTwitter />
+          </div>
+        </UIButton>
+      </div>
     </div>
   </div>
 </template>

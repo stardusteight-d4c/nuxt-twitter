@@ -10,6 +10,8 @@ const text = ref("")
 const imageInput = ref()
 const selectedFile = ref<File | null>(null)
 let inputImageUrl = ref<string | null>(null)
+const isDisable = computed(() => text.value === "")
+
 
 function handleImageClick() {
   imageInput.value.click()
@@ -32,6 +34,10 @@ function handleFormSubmit() {
     text: text.value,
     mediaFiles: [selectedFile.value],
   })
+}
+
+const data = {
+  isDisable
 }
 </script>
 
@@ -112,8 +118,8 @@ function handleFormSubmit() {
       </div>
 
       <div>
-        <UIButton size="md" @click="handleFormSubmit">
-          <strong> Tweet </strong>
+        <UIButton size="lg" :disable="(data.isDisable as any)" @click="handleFormSubmit">
+          Tweet
         </UIButton>
       </div>
     </div>
