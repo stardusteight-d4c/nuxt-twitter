@@ -70,48 +70,52 @@ function handleFormSubmit() {
     </div>
 
     <!-- icons -->
-    <div class="flex items-center">
-      <div class="flex p-2 pl-16">
-        <div
-          @click="handleImageClick"
-          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
-        >
-          <IconImage />
+    <div class="flex p-2 pl-14 text-white justify-between">
+      <div class="flex items-center">
+        <div class="flex w-full">
+          <div
+            @click="handleImageClick"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+          >
+            <IconImage />
+          </div>
         </div>
-      </div>
-      <div class="flex p-2 pl-4">
-        <div
-          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
-        >
-          <IconGif />
+        <div class="flex p-2 pl-4">
+          <div
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+          >
+            <IconGif />
+          </div>
+        </div>
+
+        <div class="flex p-2 pl-4">
+          <div
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+          >
+            <IconChart />
+          </div>
+        </div>
+        <div class="flex p-2 pl-4">
+          <div
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+          >
+            <IconEmoji />
+          </div>
+        </div>
+        <div class="flex p-2 pl-4">
+          <div
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+          >
+            <IconCalendar />
+          </div>
         </div>
       </div>
 
-      <div class="flex p-2 pl-4">
-        <div
-          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
-        >
-          <IconChart />
-        </div>
+      <div>
+        <UIButton size="md" @click="handleFormSubmit">
+          <strong> Tweet </strong>
+        </UIButton>
       </div>
-      <div class="flex p-2 pl-4">
-        <div
-          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
-        >
-          <IconEmoji />
-        </div>
-      </div>
-      <div class="flex p-2 pl-4">
-        <div
-          class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
-        >
-          <IconCalendar />
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <button @click="handleFormSubmit">Tweet</button>
     </div>
   </div>
 </template>
