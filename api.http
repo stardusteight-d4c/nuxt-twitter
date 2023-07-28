@@ -37,3 +37,7 @@ Content-Type: "multipart/form-data"
 ### api/tweets
 GET http://localhost:3000/api/tweets
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGMyNTMzOTBlNjYxMmU3Yzc1MWM4YmIiLCJpYXQiOjE2OTA0ODY4OTIsImV4cCI6MTY5MDQ4NzQ5Mn0.h6CjYun_FP7VbPU9L8pNoyRtSgNEJWFoVzEpC7Zrx7I
+
+###
+GET http://localhost:3000/api/tweets/64c259470e6612e7c751c8bd
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGMyNTMzOTBlNjYxMmU3Yzc1MWM4YmIiLCJpYXQiOjE2OTA1NzE2NDcsImV4cCI6MTY5MDU3MjI0N30.utrYB3eT5lFyGVaNGpj_w9FuX8TQ-LWluaKFPyGF6Mc
