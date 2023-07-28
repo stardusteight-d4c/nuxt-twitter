@@ -18,7 +18,7 @@ module.exports = {
       variants: ["group-hover"],
     },
     {
-      pattern: /bg-(red|green|blue|orange)-(100|400|500)/,
+      pattern: /bg-(red|green|blue|orange)-(100|200|300|400|500)/,
       variants: ["group-hover"],
     },
   ],

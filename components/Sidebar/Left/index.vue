@@ -3,7 +3,7 @@ const { defaultTransition } = useTailwindConfig()
 </script>
 
 <template>
-  <div class="h-screen flex flex-col">
+  <div class="h-screen flex flex-col pr-2">
     <div
       class="p-2 my-2 rounded-full hover:bg-blue-50 w-min dark:hover:bg-white/20"
       :class="defaultTransition"
@@ -15,7 +15,7 @@ const { defaultTransition } = useTailwindConfig()
       </nuxt-link>
     </div>
 
-    <div class="mt-1 space-y-1">
+    <div class="mt-1 space-y-2">
       <SidebarLeftTab active>
         <template v-slot:icon>
           <IconHome />

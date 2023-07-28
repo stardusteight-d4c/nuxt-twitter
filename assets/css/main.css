@@ -6,3 +6,7 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
+
+.auth-path {
+  clip-path: polygon(100% 0, 100% 100%, 35% 100%, 0 51%, 0 0);
+}

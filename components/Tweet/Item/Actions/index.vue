@@ -11,7 +11,7 @@ function generateRandomNumber() {
 </script>
 
 <template>
-  <div class="flex items-center justify-around w-full">
+  <div class="flex items-center justify-around xl:justify-normal xl:gap-x-[80px] w-full">
     <TweetItemActionsIcon color="blue">
       <template v-slot:icon>
         <IconChat />

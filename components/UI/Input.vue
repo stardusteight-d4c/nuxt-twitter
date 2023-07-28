@@ -5,6 +5,8 @@ interface IProps {
   placeholder?: string
   label?: string
 }
+
+const {twitterBorderColor} = useTailwindConfig()
 const { modelValue, type = 'text', placeholder = '', label = '' } = defineProps<IProps>();
   const emits = defineEmits(['update:modelValue']);
 
@@ -19,7 +21,7 @@ const onInput = (event: Event) => {
     <label
       :for="label"
       v-if="label"
-      class="block pl-3 ml-px text-sm font-medium text-gray-700"
+      class="block text-base font-semibold text-white/80 mb-1"
       >{{ label }}</label
     >
     <input
@@ -28,7 +30,7 @@ const onInput = (event: Event) => {
       :value="modelValue"
       :placeholder="placeholder"
       @input="onInput"
-      class="block px-4 w-full border border-gray-300 rounded-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      :class="`${twitterBorderColor} border bg-transparent block px-4 py-2 outline-none w-full rounded-full shadow-sm focus:!border-blue-500 sm:text-sm`"
     />
   </div>
 </template>

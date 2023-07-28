@@ -20,6 +20,9 @@ async function handleLogin() {
 
 <template>
   <div>
+    <span class="text-blue-400 hover:underline cursor-pointer">
+      Create account
+    </span>
     <div class="pt-5 space-y-6">
       <UIInput
         label="Username"
@@ -28,12 +31,12 @@ async function handleLogin() {
       />
       <UIInput
         label="Password"
-        placeholder="*********"
+        placeholder="password"
         type="password"
         v-model="data.password"
       />
       <div>
-        <button @click="handleLogin">Submit</button>
+        <UIButton @click="handleLogin">Submit</UIButton>
       </div>
     </div>
   </div>
