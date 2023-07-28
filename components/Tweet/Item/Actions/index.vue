@@ -41,5 +41,3 @@ function generateRandomNumber() {
     </TweetItemActionsIcon>
   </div>
 </template>
-
-<style scoped></style>
