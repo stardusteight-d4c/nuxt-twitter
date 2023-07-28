@@ -2,9 +2,13 @@
 interface Props {
   user: User
   placeholder: string
+  replyTo: any
 }
 
 const props = defineProps<Props>()
+const emits = defineEmits(["onSuccess"])
+
+const replyTo = props.replyTo ?? null
 const { postTweet } = useTweets()
 const loading = ref<boolean>(false)
 
@@ -14,8 +18,9 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
     const response = await postTweet({
       text: data.text,
       mediaFiles: data.mediaFiles,
+      replyTo: replyTo?.id,
     })
-    console.log("response ->", response)
+    emits('onSuccess', response.tweet)
   } catch (error) {
     console.error(error)
   } finally {
@@ -30,7 +35,11 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
       <UISpinner />
     </div>
     <div v-else>
-      <TweetFormInput @on-submit="handleFormSubmit" :user="props.user" :placeholder="placeholder" />
+      <TweetFormInput
+        @on-submit="handleFormSubmit"
+        :user="props.user"
+        :placeholder="placeholder"
+      />
     </div>
   </div>
 </template>

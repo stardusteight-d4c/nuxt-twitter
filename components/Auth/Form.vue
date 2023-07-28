@@ -31,7 +31,7 @@ async function handleLogin() {
       />
       <UIInput
         label="Password"
-        placeholder="password"
+        placeholder="••••••••••"
         type="password"
         v-model="data.password"
       />

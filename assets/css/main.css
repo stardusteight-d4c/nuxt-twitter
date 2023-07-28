@@ -10,3 +10,15 @@
 .auth-path {
   clip-path: polygon(100% 0, 100% 100%, 35% 100%, 0 51%, 0 0);
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  border-radius: 50px;
+  background: #ffffff;
+}

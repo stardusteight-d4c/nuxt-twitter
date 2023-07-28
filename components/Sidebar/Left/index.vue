@@ -4,16 +4,14 @@ const { defaultTransition } = useTailwindConfig()
 
 <template>
   <div class="h-screen flex flex-col pr-2">
-    <div
-      class="p-2 my-2 rounded-full hover:bg-blue-50 w-min dark:hover:bg-white/20"
-      :class="defaultTransition"
+    <nuxt-link
+      to="/"
+      :class="`${defaultTransition} cursor-pointer border border-transparent hover:border-white-200 dark:hover:border-white/10 p-2 my-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/5 w-min`"
     >
-      <nuxt-link to="/">
-        <div class="w-8 h-8 dark:text-white">
-          <LogoTwitter />
-        </div>
-      </nuxt-link>
-    </div>
+      <div class="w-8 h-8 dark:text-white">
+        <LogoTwitter />
+      </div>
+    </nuxt-link>
 
     <div class="mt-1 space-y-2">
       <SidebarLeftTab active>

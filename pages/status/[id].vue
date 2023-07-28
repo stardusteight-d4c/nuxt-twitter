@@ -9,6 +9,11 @@ function getTweetIdFromRouter() {
   return useRoute().params.id as string
 }
 
+watch(
+  () => useRoute().fullPath,
+  () => getTweet()
+)
+
 async function getTweet() {
   loading.value = true
   try {

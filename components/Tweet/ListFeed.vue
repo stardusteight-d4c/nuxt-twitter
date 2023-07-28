@@ -6,6 +6,9 @@ interface Props {
 const props = defineProps<Props>()
 const { twitterBorderColor, defaultTransition } = useTailwindConfig()
 const isEmptyArray = computed(() => props.tweets.length === 0)
+function redirect(tweet: any) {
+  navigateTo(`/status/${tweet.id}`)
+}
 </script>
 
 <template>
@@ -17,11 +20,10 @@ const isEmptyArray = computed(() => props.tweets.length === 0)
     <div
       v-else
       v-for="tweet in props.tweets"
+      @click.native="redirect(tweet)"
       :class="`${twitterBorderColor} ${defaultTransition} cursor-pointer pb-4 border-b hover:bg-gray-100 dark:hover:bg-white/[0.02]`"
     >
-      <TweetItem :tweet="tweet" :key="tweet.id" />
+      <TweetItem :tweet="tweet" :key="tweet.id" compact />
     </div>
   </div>
 </template>
-
-<style scoped></style>
