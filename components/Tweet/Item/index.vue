@@ -5,7 +5,6 @@ interface Props {
 
 const props = defineProps<Props>()
 const { twitterBorderColor } = useTailwindConfig()
-
 </script>
 
 <template>
@@ -22,8 +21,10 @@ const { twitterBorderColor } = useTailwindConfig()
       >
         <img :src="image.url" class="w-full bg-cover rounded-2xl" />
       </div>
+      <div class="mt-2">
+        <TweetItemActions :tweet="tweet" />
+      </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
