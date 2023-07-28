@@ -27,6 +27,6 @@ export default defineEventHandler(async (event) => {
   })
 
   return {
-    hello: tweetTransformer(tweet),
+    tweet: tweetTransformer(tweet),
   }
 })

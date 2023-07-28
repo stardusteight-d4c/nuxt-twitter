@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props {
   user: User
+  placeholder: string
 }
 
 const props = defineProps<Props>()
@@ -29,7 +30,7 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
       <UISpinner />
     </div>
     <div v-else>
-      <TweetFormInput @on-submit="handleFormSubmit" :user="props.user" />
+      <TweetFormInput @on-submit="handleFormSubmit" :user="props.user" :placeholder="placeholder" />
     </div>
   </div>
 </template>

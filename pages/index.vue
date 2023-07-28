@@ -27,7 +27,7 @@ const homeTweets = ref([])
         <Title>Home / Twitter</Title>
       </Head>
       <div :class="`${twitterBorderColor} border-b`">
-        <TweetForm :user="user" />
+        <TweetForm :user="user" placeholder="What's happening?" />
       </div>
       <TweetListFeed :tweets="homeTweets" />
     </MainSection>

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 interface Props {
   user: User
+  placeholder: string
 }
 const props = defineProps<Props>()
 const emits = defineEmits(["onSubmit"])
@@ -53,7 +54,7 @@ const data = {
       <div class="w-full p-2">
         <textarea
           v-model="text"
-          placeholder="What's happening?"
+          :placeholder="placeholder"
           :class="`${twitterBorderColor} focus:!border-blue-400 rounded-xl w-full min-h-[125px] p-2 text-lg resize-none outline-none text-gray-900 placeholder:text-gray-400 bg-transparent border dark:text-white focus:ring-0`"
         />
       </div>

@@ -9,7 +9,7 @@ const isEmptyArray = computed(() => props.tweets.length === 0)
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div>
     <div v-if="isEmptyArray" class="p-4 h-full">
       <p class="text-center text-gray-500 text-2xl">No tweets 🥺</p>
     </div>
