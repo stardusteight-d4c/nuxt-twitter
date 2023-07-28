@@ -2,7 +2,7 @@
 
 <template>
   <div class="flex h-screen">
-    <div class="relative flex-1 hidden w-0 lg:block">
+    <div class="relative dark:text-white flex-1 hidden w-0 lg:block">
       <img
         src="~/assets/twitter-background.png"
         alt=""

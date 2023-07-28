@@ -9,7 +9,7 @@ const { defaultTransition } = useTailwindConfig()
       :class="defaultTransition"
     >
       <nuxt-link to="/">
-        <div class="w-8 h-8">
+        <div class="w-8 h-8 dark:text-white">
           <LogoTwitter />
         </div>
       </nuxt-link>
@@ -70,7 +70,7 @@ const { defaultTransition } = useTailwindConfig()
       </div>
       <div class="block xl:hidden w-fit px-3">
         <UIButton type="icon">
-          <div class="w-6 h-6 p-1 font-bold">
+          <div class="w-6 h-6 p-1 font-bold dark:text-white">
             <LogoTwitter />
           </div>
         </UIButton>

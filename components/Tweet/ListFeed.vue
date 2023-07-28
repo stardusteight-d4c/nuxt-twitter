@@ -8,7 +8,7 @@ const props = defineProps<Props>()
 
 <template>
   <h1>ListFeed</h1>
-  <ul>
+  <ul class="dark:text-white">
     <li v-for="tweet in props.tweets">
       {{ tweet }}
     </li>

@@ -76,7 +76,7 @@ const data = {
 
     <!-- icons -->
     <div class="flex p-2 pl-14 text-white justify-between">
-      <div class="flex items-center">
+      <div class="flex items-center ml-1">
         <div class="flex w-full">
           <div
             @click="handleImageClick"
@@ -116,7 +116,7 @@ const data = {
         </div>
       </div>
 
-      <div>
+      <div class="mr-4">
         <UIButton
           size="lg"
           :disable="(data.isDisable as any)"
