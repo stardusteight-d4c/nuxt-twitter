@@ -13,6 +13,6 @@ export const tweetTransformer = (tweet: any): any => {
     replies: !!tweet.replies ? tweet.replies.map(tweetTransformer) : [],
     replyTo: !!tweet.replyTo ? tweetTransformer(tweet.replyTo) : null,
     repliesCount: !!tweet.replies ? tweet.replies.length : 0,
-    postAtHuman: human(tweet.createdAt)
+    postedAtHuman: human(tweet.createdAt)
   }
 }

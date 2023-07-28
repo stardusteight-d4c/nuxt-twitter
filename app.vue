@@ -11,7 +11,7 @@ onBeforeMount(() => {
 
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="bg-white dark:bg-dim-900">
+    <div class="bg-white dark:bg-dim-900 dark:text-white">
       <div v-if="isAuthLoading">
        <LoadingPage />
       </div>
