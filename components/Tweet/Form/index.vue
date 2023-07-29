@@ -2,7 +2,7 @@
 interface Props {
   user: User
   placeholder: string
-  replyTo: any
+  replyTo?: any
 }
 
 const props = defineProps<Props>()
@@ -43,5 +43,3 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
     </div>
   </div>
 </template>
-
-<style scoped></style>

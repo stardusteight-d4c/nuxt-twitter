@@ -61,4 +61,3 @@ const styles = computed(
   </button>
 </template>
 
-<style scoped></style>

@@ -6,7 +6,7 @@ const { twitterBorderColor } = useTailwindConfig()
 onBeforeMount(async () => {
   loading.value = true
   try {
-    const { tweets } = await getHomeTweets() as any
+    const { tweets } = (await getHomeTweets()) as any
     homeTweets.value = tweets
   } catch (error) {
     console.error(error)
@@ -14,6 +14,12 @@ onBeforeMount(async () => {
     loading.value = false
   }
 })
+
+function handleFormSuccess(tweet: any) {
+  navigateTo({
+    path: `/status/${tweet.id}`,
+  })
+}
 
 const loading = ref(false)
 const user = useAuthUser() as unknown as User
@@ -27,7 +33,11 @@ const homeTweets = ref([])
         <Title>Home / Twitter</Title>
       </Head>
       <div :class="`${twitterBorderColor} border-b`">
-        <TweetForm :user="user" placeholder="What's happening?" />
+        <TweetForm
+          :user="user"
+          @on-success="handleFormSuccess"
+          placeholder="What's happening?"
+        />
       </div>
       <TweetListFeed :tweets="homeTweets" />
     </MainSection>

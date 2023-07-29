@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const { defaultTransition } = useTailwindConfig()
+const emits = defineEmits(["onTweet"])
+
+function emitsTweet() {
+  emits("onTweet")
+}
 </script>
 
 <template>
@@ -64,10 +69,10 @@ const { defaultTransition } = useTailwindConfig()
       </SidebarLeftTab>
 
       <div class="hidden xl:block">
-        <UIButton size="lg" liquid> Tweet </UIButton>
+        <UIButton size="lg" liquid @click="emitsTweet"> Tweet </UIButton>
       </div>
       <div class="block xl:hidden w-fit px-3">
-        <UIButton type="icon">
+        <UIButton type="icon" @click="emitsTweet">
           <div class="w-6 h-6 p-1 font-bold dark:text-white">
             <LogoTwitter />
           </div>
