@@ -22,6 +22,13 @@ emitter.$on("replyTweet", (tweet: any) => {
   openPostTweetModal(tweet)
 })
 
+function handleFormSuccess(tweet: any) {
+  closePostTweetModal()
+  navigateTo({
+    path: `/status/${tweet.id}`,
+  })
+}
+
 function handleModalClose() {
   closePostTweetModal()
 }
@@ -64,6 +71,7 @@ function handleOpenTweetModal() {
         <TweetForm
           :user="user"
           :reply-to="replyTweet"
+          @on-success="handleFormSuccess"
           :placeholder="
             replyTweet?.id ? 'Tweet your reply' : 'What`s happening?'
           "
