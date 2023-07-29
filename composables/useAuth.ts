@@ -11,12 +11,12 @@ export default () => {
   const useAuthUser = () => useState("auth_user")
   const useAuthLoading = () => useState("auth_loading", () => true)
 
-  const setToken = (newToken: string) => {
+  const setToken = (newToken: string | null) => {
     const authToken = useAuthToken()
     authToken.value = newToken
   }
 
-  const setUser = (newUser: Omit<User, "password">) => {
+  const setUser = (newUser: Omit<User, "password"> | null) => {
     const authUser = useAuthUser()
     authUser.value = newUser
   }
@@ -38,6 +38,21 @@ export default () => {
         })
         setToken(data.access_token)
         setUser(data.user as unknown as Omit<User, "password">)
+        resolve(true)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
+
+  const logout = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        await useFetchApi("/api/auth/logout", {
+          method: "POST",
+        })
+        setToken(null)
+        setUser(null)
         resolve(true)
       } catch (error) {
         reject(error)
@@ -100,5 +115,5 @@ export default () => {
     })
   }
 
-  return { login, useAuthUser, useAuthToken, useAuthLoading, initAuth }
+  return { login, logout, useAuthUser, useAuthToken, useAuthLoading, initAuth }
 }

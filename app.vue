@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const darkMode = ref(true)
-const { useAuthUser, initAuth, useAuthLoading } = useAuth()
+const { useAuthUser, initAuth, useAuthLoading, logout } = useAuth()
 const isAuthLoading = useAuthLoading()
 const user: any = useAuthUser()
 const {
@@ -33,6 +33,10 @@ function handleFormSuccess(tweet: any) {
   })
 }
 
+function handleUserLogout() {
+  logout()
+}
+
 function handleModalClose() {
   closePostTweetModal()
 }
@@ -55,7 +59,7 @@ function handleOpenTweetModal() {
           <!-- Left sidebar -->
           <div class="hidden md:block xs:col-span-1 xl:col-span-2">
             <div class="sticky top-0">
-              <SidebarLeft @on-tweet="handleOpenTweetModal" />
+              <SidebarLeft @on-tweet="handleOpenTweetModal" @on-logout="handleUserLogout" :user="user" />
             </div>
           </div>
           <!-- Main content -->

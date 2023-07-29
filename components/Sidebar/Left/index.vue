@@ -1,6 +1,12 @@
 <script setup lang="ts">
+interface Props {
+  user: any
+}
+
+const props = defineProps<Props>()
+const emits = defineEmits(["onTweet", "onLogout"])
+
 const { defaultTransition } = useTailwindConfig()
-const emits = defineEmits(["onTweet"])
 
 function emitsTweet() {
   emits("onTweet")
@@ -77,6 +83,32 @@ function emitsTweet() {
             <LogoTwitter />
           </div>
         </UIButton>
+      </div>
+    </div>
+
+    <div
+      @click="emits('onLogout')"
+      :class="`${defaultTransition} flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-100 dark:hover:bg-dim-800`"
+    >
+      <div class="flex flex-row">
+        <img
+          :src="props.user.profileImage"
+          alt="user_account"
+          class="w-10 h-10 rounded-full"
+        />
+        <div class="hidden xl:flex flex-col ml-2">
+          <h3 class="text-sm font-bold text-gray-800 dark:text-white">
+            {{ user.name }}
+          </h3>
+          <p class="text-sm text-gray-400">
+            {{ user.handle }}
+          </p>
+        </div>
+      </div>
+      <div class="hidden ml-auto xl:block">
+        <div class="w-6 h-6">
+          <IconChevronDoubleDown />
+        </div>
       </div>
     </div>
   </div>

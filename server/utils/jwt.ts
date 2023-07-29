@@ -41,8 +41,8 @@ export const generateTokens = (user: User) => {
   }
 }
 
-export const sendRefreshToken = (event: any, token: string) => {
-  setCookie(event, "refresh_token", token, {
+export const sendRefreshToken = (event: any, token: string | null) => {
+  setCookie(event, "refresh_token", String(token), {
     httpOnly: true,
     sameSite: true,
   })
