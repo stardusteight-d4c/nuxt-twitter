@@ -1,6 +1,11 @@
 <script setup lang="ts">
 const search = ref("")
-const {twitterBorderColor} = useTailwindConfig()
+const { twitterBorderColor } = useTailwindConfig()
+const emitter = useEmitter()
+
+function handleToggleDarkMode() {
+    emitter.$emit('toggleDarkMode')
+}
 
 function handleSearch() {
   useRouter().push({
@@ -40,7 +45,7 @@ const whoToFollow = ref([
   <div class="flex flex-col">
     <!-- Search bar -->
 
-    <div class="relative m-2 w-full">
+    <div class="relative m-2">
       <div
         class="absolute flex items-center h-full pl-4 text-gray-500 cursor-pointer"
       >
@@ -65,8 +70,8 @@ const whoToFollow = ref([
     <!-- Preview Card: What's happening -->
     <SidebarRightPreviewCard title="What's happening">
       <SidebarRightPreviewCardItem v-for="topic in whatsHappening">
-        <div class="p-2">
-          <h2 class="font-bold text-gray-800 dark:text-white">
+        <div class="p-[1px] flex items-center justify-between">
+          <h2 class="text-gray-800 dark:text-white">
             {{ topic.title }}
           </h2>
           <p class="text-sm text-gray-400">{{ topic.count }}</p>
@@ -100,5 +105,34 @@ const whoToFollow = ref([
         </div>
       </SidebarRightPreviewCardItem>
     </SidebarRightPreviewCard>
+
+    <footer>
+      <ul class="mx-2 my-4 text-xs text-gray-500">
+        <li class="inline-block mx-2">
+          <a
+            href="#"
+            class="hover:underline"
+            @click.prevent="handleToggleDarkMode"
+            >Dark mode</a
+          >
+        </li>
+        <li class="inline-block mx-2">
+          <a href="#" class="hover:underline">Privacy Policy</a>
+        </li>
+        <li class="inline-block mx-2">
+          <a href="#" class="hover:underline">Cookie Policy</a>
+        </li>
+        <li class="inline-block mx-2">
+          <a href="#" class="hover:underline">Accessability</a>
+        </li>
+        <li class="inline-block mx-2">
+          <a href="#" class="hover:underline">Ads info</a>
+        </li>
+        <li class="inline-block mx-2">
+          <a href="#" class="hover:underline">More</a>
+        </li>
+        <li class="inline-block mx-2">© 2022 Twitter, Inc.</li>
+      </ul>
+    </footer>
   </div>
 </template>

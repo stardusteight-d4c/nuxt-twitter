@@ -1,12 +1,12 @@
 <script setup lang="ts">
 const { useAuthUser } = useAuth()
-const { getHomeTweets } = useTweets()
+const { getTweets } = useTweets()
 const { twitterBorderColor } = useTailwindConfig()
 
 onBeforeMount(async () => {
   loading.value = true
   try {
-    const { tweets } = (await getHomeTweets()) as any
+    const { tweets } = (await getTweets()) as any
     homeTweets.value = tweets
   } catch (error) {
     console.error(error)
@@ -30,7 +30,7 @@ const homeTweets = ref([])
   <div>
     <MainSection title="Home" :loading="loading">
       <Head>
-        <Title>Home / Twitter</Title>
+        <Title>Twitter / Home</Title>
       </Head>
       <div :class="`${twitterBorderColor} border-b`">
         <TweetForm

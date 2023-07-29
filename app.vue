@@ -22,6 +22,10 @@ emitter.$on("replyTweet", (tweet: any) => {
   openPostTweetModal(tweet)
 })
 
+emitter.$on("toggleDarkMode", () => {
+  darkMode.value = !darkMode.value
+})
+
 function handleFormSuccess(tweet: any) {
   closePostTweetModal()
   navigateTo({
