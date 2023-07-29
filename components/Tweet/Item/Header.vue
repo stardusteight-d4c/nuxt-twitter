@@ -10,10 +10,8 @@ const replyToTweetUrl = computed(() => `/status/${props.tweet?.replyTo?.id}`)
 
 <template>
   <div class="p-4 flex">
-    <div>
-      <img :src="author.profileImage" class="w-10 h-10 rounded-full" />
-    </div>
-    <div class="ml-3">
+      <img :src="author.profileImage" class="profile-path w-10 h-10 " />
+    <div class="ml-3 -mt-1">
       <span class="font-semibold text-gray-800 dark:text-white">{{
         author.name
       }}</span>
@@ -21,7 +19,7 @@ const replyToTweetUrl = computed(() => `/status/${props.tweet?.replyTo?.id}`)
         <nuxt-link to="#">
           {{ author.handle }}
         </nuxt-link>
-        . {{ props.tweet.postedAtHuman }}
+        • {{ props.tweet.postedAtHuman }}
       </span>
       <p v-if="props.tweet.replyTo" class="text-sm">
         <span class="text-gray-500"> Replying to </span>

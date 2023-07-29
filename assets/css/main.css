@@ -11,6 +11,14 @@
   clip-path: polygon(100% 0, 100% 100%, 35% 100%, 0 51%, 0 0);
 }
 
+.profile-path {
+  clip-path: polygon(30% 0%, 70% 0%, 100% 38%, 100% 38%, 50% 100%, 50% 100%, 0 38%, 0 38%);
+}
+
+.button-path {
+  clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

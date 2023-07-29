@@ -17,9 +17,9 @@ function handleSearch() {
 }
 
 const whatsHappening = ref([
-  { title: "SpaceX", count: "18.8k Tweets" },
-  { title: "#CodingIsFun", count: "8.8k Tweets" },
-  { title: "artforall", count: "1.8k Tweets" },
+  { title: "#spacex", count: "18.8k Tweets" },
+  { title: "#nuxt", count: "8.8k Tweets" },
+  { title: "#anime", count: "1.8k Tweets" },
 ])
 
 const whoToFollow = ref([
@@ -86,18 +86,18 @@ const whoToFollow = ref([
             <img
               :src="account.image"
               :alt="account.name"
-              class="w-10 h-10 rounded-full"
+              class="profile-path w-10 h-10"
             />
             <div class="flex flex-col ml-2">
               <h1 class="text-base font-bold text-gray-900 dark:text-white">
                 {{ account.name }}
               </h1>
-              <p class="text-sm text-gray-400">{{ account.handle }}</p>
+              <p class="text-sm text-gray-400 -mt-1">{{ account.handle }}</p>
             </div>
           </div>
           <div class="flex h-full">
             <button
-              class="px-4 py-2 font-bold text-xs text-white dark:text-black bg-black dark:bg-white rounded-full"
+              class="button-path px-4 py-2 font-bold text-xs text-white dark:text-black bg-black dark:bg-white"
             >
               Follow
             </button>

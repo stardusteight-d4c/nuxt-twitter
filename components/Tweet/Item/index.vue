@@ -24,7 +24,7 @@ const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
     <TweetItemHeader :tweet="props.tweet" />
     <div :class="tweetBodyWrapper">
       <p
-        :class="`${textSize} flex-shrink font-medium text-gray-800 dark:text-white w-auto`"
+        :class="`${textSize} pl-1 flex-shrink font-medium text-gray-800 dark:text-white w-auto`"
       >
         {{ props.tweet.text }}
       </p>

@@ -11,7 +11,7 @@ const { twitterBorderColor } = useTailwindConfig()
 <template>
   <div :class="`${twitterBorderColor} border-x`">
     <div
-      class="glassmorphism sticky top-0 px-4 py-3 bg-white/80 dark:bg-dim-900/80"
+      class="glassmorphism sticky top-0 px-4 py-3 bg-white/80 dark:bg-dim-900/80 z-50"
     >
       <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100">
         {{ title }}

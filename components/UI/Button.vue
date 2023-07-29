@@ -52,7 +52,7 @@ const styles = computed(
   <button
     :class="`${
       type === 'text' && styles
-    } flex justify-center text-white bg-blue-400 rounded-full hover:bg-blue-500 font-sm disabled:bg-blue-400 disabled:opacity-80 disabled:cursor-not-allowed`"
+    } button-path flex justify-center text-white bg-blue-400 hover:bg-blue-500 font-sm disabled:bg-blue-400 disabled:opacity-80 disabled:cursor-not-allowed`"
     :disabled="disable"
   >
     <span>

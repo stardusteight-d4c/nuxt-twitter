@@ -8,7 +8,7 @@ const { twitterBorderColor } = useTailwindConfig()
   </Head>
   <div class="grid grid-cols-8 max-w-[100vw] w-full overflow-hidden h-screen">
     <div
-      :class="`${twitterBorderColor} border-r relative shadow-md shadow-white/10 dark:text-white col-span-5 hidden w-0 lg:w-full lg:block`"
+      :class="`${twitterBorderColor} border-r relative shadow-md shadow-white/10 text-white col-span-5 hidden w-0 lg:w-full lg:block`"
     >
       <img
         src="~/assets/twitter-background.png"
