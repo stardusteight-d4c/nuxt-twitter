@@ -6,7 +6,7 @@ const wrapperClasses = computed(() => `${defaultTransition} ${twitterBorderColor
 
 <template>
   <div
-    class="p-3 hover:bg-gray-100 cursor-pointer dark:hover:bg-blue-200/5 border-b"
+    class="px-2 hover:bg-gray-100 cursor-default dark:hover:bg-white/5 border-b"
     :class="wrapperClasses"
   >
     <slot></slot>

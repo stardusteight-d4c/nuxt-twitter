@@ -29,7 +29,7 @@ const whoToFollow = ref([
     <!-- Preview Card: What's happening -->
     <SidebarRightPreviewCard title="What's happening">
       <SidebarRightPreviewCardItem v-for="topic in whatsHappening">
-        <div>
+        <div class="p-2">
           <h2 class="font-bold text-gray-800 dark:text-white">
             {{ topic.title }}
           </h2>
