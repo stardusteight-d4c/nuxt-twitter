@@ -1,4 +1,16 @@
 <script setup lang="ts">
+const search = ref("")
+const {twitterBorderColor} = useTailwindConfig()
+
+function handleSearch() {
+  useRouter().push({
+    path: "/search",
+    query: {
+      q: search.value,
+    },
+  })
+}
+
 const whatsHappening = ref([
   { title: "SpaceX", count: "18.8k Tweets" },
   { title: "#CodingIsFun", count: "8.8k Tweets" },
@@ -20,12 +32,36 @@ const whoToFollow = ref([
     name: "Guts",
     handle: "@justguts",
     image: `https://i1.sndcdn.com/artworks-AV3yT135aFYucjX4-O771hA-t500x500.jpg`,
-  }
+  },
 ])
 </script>
 
 <template>
   <div class="flex flex-col">
+    <!-- Search bar -->
+
+    <div class="relative m-2 w-full">
+      <div
+        class="absolute flex items-center h-full pl-4 text-gray-500 cursor-pointer"
+      >
+        <div class="w-6 h-6">
+          <IconMagnifyingGlass />
+        </div>
+      </div>
+      <div
+        class="absolute flex items-center right-0 h-full pr-4 text-xs text-black dark:text-gray-500"
+      >
+        <code class="mr-1">Press </code
+        ><kbd class="border border-gray-500 rounded-sm px-[2px]">Enter</kbd>
+      </div>
+      <input
+        @keydown.enter="handleSearch"
+        v-model="search"
+        placeholder="Search twitter"
+        :class="`${twitterBorderColor} flex items-center w-full pl-12 pr-[100px] text-sm font-normal text-black dark:text-white bg-gray-200 border rounded-full shadow dark:bg-white/5 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border-blue-300 h-9`"
+      />
+    </div>
+
     <!-- Preview Card: What's happening -->
     <SidebarRightPreviewCard title="What's happening">
       <SidebarRightPreviewCardItem v-for="topic in whatsHappening">
