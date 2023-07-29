@@ -2,11 +2,18 @@
 interface Props {
   tweet: any
   compact?: boolean
+  hideActions?: boolean
 }
 
 const props = defineProps<Props>()
 const compact = props.compact ?? false
+const hideActions = props.hideActions ?? false
 const { twitterBorderColor } = useTailwindConfig()
+const emitter = useEmitter()
+
+function handleCommentClick() {
+  emitter.$emit("replyTweet", props.tweet)
+}
 
 const tweetBodyWrapper = computed(() => (compact ? "ml-16" : "ml-2 mt-4"))
 const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
@@ -16,7 +23,9 @@ const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
   <div>
     <TweetItemHeader :tweet="props.tweet" />
     <div :class="tweetBodyWrapper">
-      <p :class="`${textSize} flex-shrink font-medium text-gray-800 dark:text-white w-auto`">
+      <p
+        :class="`${textSize} flex-shrink font-medium text-gray-800 dark:text-white w-auto`"
+      >
         {{ props.tweet.text }}
       </p>
       <div
@@ -26,8 +35,12 @@ const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
       >
         <img :src="image.url" class="w-full bg-cover rounded-2xl" />
       </div>
-      <div class="mt-2">
-        <TweetItemActions :tweet="tweet" :compact="compact" />
+      <div class="mt-2" v-if="!hideActions">
+        <TweetItemActions
+          :tweet="tweet"
+          :compact="compact"
+          @on-comment-click="handleCommentClick"
+        />
       </div>
     </div>
   </div>

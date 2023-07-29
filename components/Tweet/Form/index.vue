@@ -3,12 +3,14 @@ interface Props {
   user: User
   placeholder: string
   replyTo?: any
+  showReply?: boolean
 }
 
 const props = defineProps<Props>()
 const emits = defineEmits(["onSuccess"])
 
 const replyTo = props.replyTo ?? null
+const showReply = props.showReply ?? false
 const { postTweet } = useTweets()
 const loading = ref<boolean>(false)
 
@@ -20,7 +22,7 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
       mediaFiles: data.mediaFiles,
       replyTo: replyTo?.id,
     })
-    emits('onSuccess', response.tweet)
+    emits("onSuccess", response.tweet)
   } catch (error) {
     console.error(error)
   } finally {
@@ -35,6 +37,7 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
       <UISpinner />
     </div>
     <div v-else>
+      <TweetItem :tweet="replyTo" v-if="replyTo && showReply" hideActions />
       <TweetFormInput
         @on-submit="handleFormSubmit"
         :user="props.user"

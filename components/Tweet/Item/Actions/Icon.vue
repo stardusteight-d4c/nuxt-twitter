@@ -5,13 +5,18 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const emits = defineEmits(["onClick"])
+
 const size = props.size ?? 5
 
 const { defaultTransition } = useTailwindConfig()
 </script>
 
 <template>
-  <div class="flex items-center text-gray-400 cursor-pointer group w-fit">
+  <div
+    @click.stop.prevent="emits('onClick')"
+    class="flex items-center text-gray-400 cursor-pointer group w-fit"
+  >
     <div
       :class="`${defaultTransition} p-2 rounded-full group-hover:bg-${props.color}-300/20 group-hover:text-${props.color}-500`"
     >

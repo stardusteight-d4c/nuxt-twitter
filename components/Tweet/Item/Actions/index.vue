@@ -5,6 +5,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const emits = defineEmits(["onCommentClick"])
 const compact = props.compact ?? false
 const size = computed(() => (compact ? 5 : 8))
 const showStats = computed(() => compact)
@@ -18,7 +19,11 @@ function generateRandomNumber() {
   <div
     class="flex items-center justify-around xl:justify-normal xl:gap-x-[80px] w-full"
   >
-    <TweetItemActionsIcon color="blue" :size="size">
+    <TweetItemActionsIcon
+      @on-click="emits('onCommentClick')"
+      color="blue"
+      :size="size"
+    >
       <template v-slot:icon="{ classes }">
         <IconChat :class="classes" />
       </template>

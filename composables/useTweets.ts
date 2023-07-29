@@ -1,14 +1,21 @@
 export default () => {
   const usePostTweetModal = () => useState("post_tweet_modal", () => false)
+  const useReplyTweet: any = () => useState("reply_tweet", () => null)
 
   const closePostTweetModal = () => {
     const postTweetModal = usePostTweetModal()
     postTweetModal.value = false
   }
 
-  const openPostTweetModal = () => {
+  const setReplyTo = (tweet: any) => {
+    const replyTweet = useReplyTweet()
+    replyTweet.value = tweet
+  }
+
+  const openPostTweetModal = (tweet: any = null) => {
     const postTweetModal = usePostTweetModal()
     postTweetModal.value = true
+    setReplyTo(tweet)
   }
 
   const postTweet = (formData: {
@@ -62,6 +69,7 @@ export default () => {
     getTweetById,
     closePostTweetModal,
     openPostTweetModal,
-    usePostTweetModal
+    useReplyTweet,
+    usePostTweetModal,
   }
 }

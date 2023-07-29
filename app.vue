@@ -3,21 +3,31 @@ const darkMode = ref(true)
 const { useAuthUser, initAuth, useAuthLoading } = useAuth()
 const isAuthLoading = useAuthLoading()
 const user: any = useAuthUser()
-const { closePostTweetModal, openPostTweetModal, usePostTweetModal } =
-  useTweets()
+const {
+  closePostTweetModal,
+  openPostTweetModal,
+  usePostTweetModal,
+  useReplyTweet,
+} = useTweets()
 
 onBeforeMount(() => {
   initAuth()
 })
 
 const postTweetModal = usePostTweetModal()
+const emitter = useEmitter()
+const replyTweet = useReplyTweet()
+
+emitter.$on("replyTweet", (tweet: any) => {
+  openPostTweetModal(tweet)
+})
 
 function handleModalClose() {
   closePostTweetModal()
 }
 
 function handleOpenTweetModal() {
-  openPostTweetModal()
+  openPostTweetModal(null)
 }
 </script>
 
@@ -51,7 +61,14 @@ function handleOpenTweetModal() {
       </div>
       <AuthPage v-else />
       <UIModal :isOpen="postTweetModal" @onClose="handleModalClose">
-        <TweetForm :user="user" placeholder="Tweet your reply" />
+        <TweetForm
+          :user="user"
+          :reply-to="replyTweet"
+          :placeholder="
+            replyTweet?.id ? 'Tweet your reply' : 'What`s happening?'
+          "
+          showReply
+        />
       </UIModal>
     </div>
   </div>
