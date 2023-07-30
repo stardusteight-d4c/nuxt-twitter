@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
+    "./app/client/components/**/*.{js,vue,ts}",
+    "./app/client/layouts/*.vue",
+    "./app/client/pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
-    "./app.vue",
+    "./app/client/app.vue",
   ],
   darkMode: "class",
   // If you insert classes dynamically as in :class="`group-hover:text-${props.color}-400 ml-1`"

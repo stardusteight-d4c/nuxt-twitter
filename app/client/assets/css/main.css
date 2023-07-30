@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  @apply bg-background-light dark:bg-background-dark scroll-smooth antialiased;
+}
+
 .glassmorphism {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -12,7 +17,16 @@
 }
 
 .profile-path {
-  clip-path: polygon(30% 0%, 70% 0%, 100% 38%, 100% 38%, 50% 100%, 50% 100%, 0 38%, 0 38%);
+  clip-path: polygon(
+    30% 0%,
+    70% 0%,
+    100% 38%,
+    100% 38%,
+    50% 100%,
+    50% 100%,
+    0 38%,
+    0 38%
+  );
 }
 
 .button-path {
