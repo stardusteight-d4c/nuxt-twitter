@@ -4,6 +4,8 @@ export default defineNuxtConfig({
   build: {
     transpile: ["@heroicons/vue"],
   },
+  srcDir: "app/client",
+  serverDir: "app/server",
   devtools: { enabled: false },
   css: ["~/assets/css/main.css"],
   typescript: {
