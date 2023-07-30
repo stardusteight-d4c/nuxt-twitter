@@ -9,7 +9,7 @@ const { twitterBorderColor } = useTailwindConfig()
 </script>
 
 <template>
-  <div :class="`${twitterBorderColor} border-x`">
+  <div>
     <div
       class="glassmorphism sticky top-0 px-4 py-3 bg-background-light/80 dark:bg-background-dark/80 z-50"
     >

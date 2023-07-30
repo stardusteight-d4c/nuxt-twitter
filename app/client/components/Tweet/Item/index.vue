@@ -32,7 +32,7 @@ const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
       <div
         v-for="image in tweet.mediaFiles"
         :key="image.id"
-        :class="`${twitterBorderColor} flex my-3 mr-2 border-2 rounded-2xl overflow-hidden`"
+        :class="`${twitterBorderColor} flex my-3 mr-2 border-b-2 rounded-2xl overflow-hidden`"
       >
         <img :src="image.url" class="w-full bg-cover rounded-2xl" />
       </div>

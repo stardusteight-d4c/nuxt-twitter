@@ -4,7 +4,7 @@ const { twitterBorderColor } = useTailwindConfig()
 const emitter = useEmitter()
 
 function handleToggleDarkMode() {
-  emitter.$emit("toggleDarkMode")
+  emitter.$emit("toggle_dark_mode")
 }
 
 function handleSearch() {

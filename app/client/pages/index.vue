@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { useAuthUser } = useAuth()
-const { getTweets } = useTweets()
 const { twitterBorderColor } = useTailwindConfig()
+const { getTweets } = useTweets()
 const homeTweets = ref([])
 const loading = ref(false)
 const user = useAuthUser() as unknown as User
@@ -32,7 +32,7 @@ function handleFormSuccess(tweet: any) {
     </Head>
     <LayoutMain>
       <MainSection title="Home" :loading="loading">
-        <div :class="`${twitterBorderColor} border-b`">
+        <div :class="`${twitterBorderColor} wrapper`">
           <TweetForm
             v-if="user"
             :user="user"
@@ -45,3 +45,9 @@ function handleFormSuccess(tweet: any) {
     </LayoutMain>
   </UIFragment>
 </template>
+
+<style scoped lang="postcss">
+.wrapper {
+  @apply border-b;
+}
+</style>

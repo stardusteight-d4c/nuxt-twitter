@@ -3,5 +3,5 @@ export default (): {
   twitterBorderColor: string
 } => ({
   defaultTransition: `transition ease-in-out duration-200`,
-  twitterBorderColor: `border-white-200 dark:border-white/10`,
+  twitterBorderColor: `border-gray-300 dark:border-white/10`,
 })

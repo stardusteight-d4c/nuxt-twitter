@@ -4,7 +4,7 @@ interface IProps {
 }
 const props = defineProps<IProps>()
 
-const { defaultTransition, twitterBorderColor } = useTailwindConfig()
+const { defaultTransition } = useTailwindConfig()
 const textClasses = computed(() =>
   props.active ? "font-semibold" : "font-normal"
 )

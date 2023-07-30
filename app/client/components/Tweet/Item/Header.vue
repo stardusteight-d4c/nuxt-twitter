@@ -9,9 +9,9 @@ const replyToTweetUrl = computed(() => `/status/${props.tweet?.replyTo?.id}`)
 </script>
 
 <template>
-  <div class="p-4 flex">
+  <div class="p-4 flex items-center">
       <img :src="author.profileImage" class="rounded-full w-10 h-10 " />
-    <div class="ml-3 -mt-1">
+    <div class="ml-3">
       <span class="font-semibold text-gray-800 dark:text-white">{{
         author.name
       }}</span>

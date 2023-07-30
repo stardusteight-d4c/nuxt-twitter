@@ -5,21 +5,25 @@ const darkMode = ref(true)
 const route = useRoute()
 const path = ref(route.fullPath)
 
-onBeforeMount(async () => {
-  await initAuth()
+onBeforeMount(() => {
+  initAuth()
 })
 
-emitter.$on("toggleDarkMode", () => {
+emitter.$on("toggle_dark_mode", () => {
   darkMode.value = !darkMode.value
 })
-
-console.log('path', path);
 </script>
 
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="bg-background-light dark:bg-background-dark">
+    <div class="wrapper">
       <NuxtPage :key="path" />
     </div>
   </div>
 </template>
+
+<style scoped lang="postcss">
+.wrapper {
+  @apply bg-background-light dark:bg-background-dark;
+}
+</style>

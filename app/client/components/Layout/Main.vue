@@ -49,7 +49,7 @@ watch(() => user.value, changeRouteCondition);
 </script>
 
 <template>
-  <UIFragment>
+  <UIFragment class="min-h-screen">
     <LoadingPage v-if="isAuthLoading" />
     <div v-if="!isAuthLoading && user">
       <div
@@ -60,7 +60,7 @@ watch(() => user.value, changeRouteCondition);
           @on-logout="handleUserLogout"
           :user="user"
         />
-        <main class="col-span-12 md:col-span-8 xl:col-span-6">
+        <main class="col-span-12 md:col-span-8 xl:col-span-6 h-full border border-white-200 dark:border-white/10">
           <slot />
         </main>
         <SidebarRight />
