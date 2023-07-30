@@ -2,6 +2,9 @@
 const { useAuthUser } = useAuth()
 const { getTweets } = useTweets()
 const { twitterBorderColor } = useTailwindConfig()
+const homeTweets = ref([])
+const loading = ref(false)
+const user = useAuthUser() as unknown as User
 
 onBeforeMount(async () => {
   loading.value = true
@@ -20,22 +23,15 @@ function handleFormSuccess(tweet: any) {
     path: `/status/${tweet.id}`,
   })
 }
-
-const loading = ref(false)
-const user = useAuthUser() as unknown as User
-const homeTweets = ref([])
-
-console.log(homeTweets);
-
 </script>
 
 <template>
-  <div>
-    <NuxtLayout>
+  <UIFragment>
+    <Head>
+      <Title>Twitter / Home</Title>
+    </Head>
+    <LayoutMain>
       <MainSection title="Home" :loading="loading">
-        <Head>
-          <Title>Twitter / Home</Title>
-        </Head>
         <div :class="`${twitterBorderColor} border-b`">
           <TweetForm
             v-if="user"
@@ -46,6 +42,6 @@ console.log(homeTweets);
         </div>
         <TweetListFeed :tweets="homeTweets" />
       </MainSection>
-    </NuxtLayout>
-  </div>
+    </LayoutMain>
+  </UIFragment>
 </template>

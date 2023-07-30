@@ -19,7 +19,7 @@ function closeModal() {
 </script>
 
 <template>
-  <TransitionRoot appear :show="props.isOpen" as="template">
+  <!-- <TransitionRoot appear :v-if="props.isOpen" as="template">
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
         as="template"
@@ -55,5 +55,5 @@ function closeModal() {
         </div>
       </div>
     </Dialog>
-  </TransitionRoot>
+  </TransitionRoot> -->
 </template>

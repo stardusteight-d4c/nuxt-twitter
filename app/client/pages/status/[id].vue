@@ -2,7 +2,7 @@
 const { getTweetById } = useTweets()
 const { useAuthUser } = useAuth()
 const loading = ref(false)
-const tweet = ref(null)
+const tweet: any = ref(null)
 const user: any = useAuthUser()
 
 function getTweetIdFromRouter() {
@@ -29,12 +29,14 @@ getTweet()
 </script>
 
 <template>
-  <div>
-    <MainSection title="Tweet" :loading="loading">
-      <Head>
-        <Title></Title>
-      </Head>
-      <TweetDetails :user="user" :tweet="tweet" />
-    </MainSection>
-  </div>
+  <UIFragment v-if="tweet?.text">
+    <Head>
+      <Title>Twitter / {{ tweet?.text ?? '' }}</Title>
+    </Head>
+    <LayoutMain>
+      <MainSection title="Tweet" :loading="loading">
+        <TweetDetails :user="user" :tweet="tweet" />
+      </MainSection>
+    </LayoutMain>
+  </UIFragment>
 </template>

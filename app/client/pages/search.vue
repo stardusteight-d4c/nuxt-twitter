@@ -29,12 +29,14 @@ async function getTweets() {
 </script>
 
 <template>
-  <div>
-    <MainSection title="Search" :loading="loading">
-      <Head>
-        <Title>Twitter / Search</Title>
-      </Head>
-      <TweetListFeed :tweets="searchTweets" />
-    </MainSection>
-  </div>
+  <UIFragment>
+    <Head>
+      <Title>Twitter / Search</Title>
+    </Head>
+    <LayoutMain>
+      <MainSection title="Search" :loading="loading">
+        <TweetListFeed :tweets="searchTweets" />
+      </MainSection>
+    </LayoutMain>
+  </UIFragment>
 </template>

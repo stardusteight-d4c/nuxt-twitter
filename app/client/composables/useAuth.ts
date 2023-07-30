@@ -39,6 +39,9 @@ export default () => {
         setToken(data.access_token)
         setUser(data.user as unknown as Omit<User, "password">)
         resolve(true)
+        navigateTo({
+          path: "/"
+        })
       } catch (error) {
         reject(error)
       }
@@ -84,7 +87,7 @@ export default () => {
     })
   }
 
-  const reRefreshAccessToken = () => {
+  const reRefreshAccessToken = async () => {
     const authToken = useAuthToken().value as string
     if (!authToken) {
       return
@@ -93,23 +96,21 @@ export default () => {
     const newRefreshTime = jwt.exp - 60000
     setTimeout(async () => {
       await refreshToken()
-      reRefreshAccessToken()
+      await reRefreshAccessToken()
     }, newRefreshTime)
   }
 
   const initAuth = () => {
     return new Promise(async (resolve, reject) => {
-      // useAuthLoading().value = true
       setIsAuthLoading(true)
       try {
         await refreshToken()
         await getUser()
-        reRefreshAccessToken()
+        await reRefreshAccessToken()
         resolve(true)
       } catch (error) {
         reject(error)
       } finally {
-        // useAuthLoading().value = false
         setIsAuthLoading(false)
       }
     })

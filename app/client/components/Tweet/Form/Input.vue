@@ -46,7 +46,7 @@ const data = {
     <div class="flex items-start flex-shrink-0 p-4 pb-0">
       <div class="flex w-12 items-start">
         <img
-          :src="props.user.profileImage"
+          :src="props.user?.profileImage"
           alt=""
           class="rounded-full inline-block mt-2 w-10 h-10"
         />
