@@ -86,7 +86,7 @@ const whoToFollow = ref([
             <img
               :src="account.image"
               :alt="account.name"
-              class="profile-path w-10 h-10"
+              class="rounded-full w-10 h-10"
             />
             <div class="flex flex-col ml-2">
               <h1 class="text-base font-bold text-gray-900 dark:text-white">
@@ -97,7 +97,7 @@ const whoToFollow = ref([
           </div>
           <div class="flex h-full">
             <button
-              class="button-path px-4 py-2 font-bold text-xs text-white dark:text-black bg-black dark:bg-white"
+              class="rounded-full px-4 py-2 font-bold text-xs text-white dark:text-black bg-black dark:bg-white"
             >
               Follow
             </button>

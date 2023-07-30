@@ -15,11 +15,11 @@ const type = props.type ?? "text"
 const paddingStyles = computed(() => {
   switch (size) {
     case "sm":
-      return "px-3 py-2"
+      return "px-4 py-1"
     case "md":
-      return "px-4 py-2"
+      return "px-5 py-1"
     case "lg":
-      return "px-6 py-2"
+      return "px-6 py-1"
   }
 })
 
@@ -52,7 +52,7 @@ const styles = computed(
   <button
     :class="`${
       type === 'text' && styles
-    } button-path flex justify-center text-white bg-blue-400 hover:bg-blue-500 font-sm disabled:bg-blue-400 disabled:opacity-80 disabled:cursor-not-allowed`"
+    } rounded-full flex justify-center text-white bg-blue-400 hover:bg-blue-500 font-sm disabled:bg-blue-400 disabled:opacity-80 disabled:cursor-not-allowed`"
     :disabled="disable"
   >
     <span>

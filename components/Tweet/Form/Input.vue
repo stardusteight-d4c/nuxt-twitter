@@ -48,7 +48,7 @@ const data = {
         <img
           :src="props.user.profileImage"
           alt=""
-          class="profile-path inline-block mt-2 w-10 h-10"
+          class="rounded-full inline-block mt-2 w-10 h-10"
         />
       </div>
       <div class="w-full p-2">

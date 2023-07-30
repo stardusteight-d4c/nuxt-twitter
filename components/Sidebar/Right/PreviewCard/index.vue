@@ -18,7 +18,7 @@ const { twitterBorderColor, defaultTransition } = useTailwindConfig()
     </h1>
     <slot></slot>
     <div
-      :class="`${defaultTransition} p-3 text-sm text-blue-400 hover:bg-fuchsia-50 dark:hover:bg-white/5`"
+      :class="`${defaultTransition} px-3 py-2 text-sm text-blue-400 hover:bg-fuchsia-50 dark:hover:bg-white/5`"
     >
       <span class="hover:underline cursor-pointer"> Show more </span>
     </div>

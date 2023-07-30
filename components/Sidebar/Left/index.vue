@@ -94,7 +94,7 @@ function emitsTweet() {
         <img
           :src="props.user.profileImage"
           alt="user_account"
-          class="profile-path w-10 h-10"
+          class="rounded-full w-10 h-10"
         />
         <div class="hidden xl:flex flex-col ml-2">
           <h3 class="text-sm font-bold text-gray-800 dark:text-white">
