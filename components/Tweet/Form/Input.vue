@@ -81,14 +81,14 @@ const data = {
         <div class="flex w-full">
           <div
             @click="handleImageClick"
-            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-background-dark"
           >
             <IconImage />
           </div>
         </div>
         <div class="flex p-2 pl-4">
           <div
-            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-background-dark"
           >
             <IconGif />
           </div>
@@ -96,21 +96,21 @@ const data = {
 
         <div class="flex p-2 pl-4">
           <div
-            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-background-dark"
           >
             <IconChart />
           </div>
         </div>
         <div class="flex p-2 pl-4">
           <div
-            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-background-dark"
           >
             <IconEmoji />
           </div>
         </div>
         <div class="flex p-2 pl-4">
           <div
-            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-dim-800"
+            class="p-2 text-blue-400 rounded-full cursor-pointer hover:bg-blue-50 dark:hover:bg-background-dark"
           >
             <IconCalendar />
           </div>

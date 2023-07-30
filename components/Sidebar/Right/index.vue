@@ -63,7 +63,7 @@ const whoToFollow = ref([
         @keydown.enter="handleSearch"
         v-model="search"
         placeholder="Search twitter"
-        :class="`${twitterBorderColor} flex items-center w-full pl-12 pr-[100px] text-sm font-normal text-black dark:text-white bg-gray-200 border rounded-full shadow dark:bg-white/5 focus:bg-gray-100 dark:focus:bg-dim-900 focus:outline-none focus:border-blue-300 h-9`"
+        :class="`${twitterBorderColor} flex items-center w-full pl-12 pr-[100px] text-sm font-normal text-black dark:text-white bg-gray-200 border rounded-full shadow dark:bg-white/5 focus:bg-gray-100 dark:focus:bg-background-dark focus:outline-none focus:border-blue-300 h-9`"
       />
     </div>
 

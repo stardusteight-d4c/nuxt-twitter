@@ -48,7 +48,7 @@ function handleOpenTweetModal() {
 
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="bg-white dark:bg-dim-900 dark:text-white">
+    <div class="bg-background-light dark:bg-background-dark text-black dark:text-white">
       <div v-if="isAuthLoading">
         <LoadingPage />
       </div>
@@ -59,7 +59,11 @@ function handleOpenTweetModal() {
           <!-- Left sidebar -->
           <div class="hidden md:block xs:col-span-1 xl:col-span-2">
             <div class="sticky top-0">
-              <SidebarLeft @on-tweet="handleOpenTweetModal" @on-logout="handleUserLogout" :user="user" />
+              <SidebarLeft
+                @on-tweet="handleOpenTweetModal"
+                @on-logout="handleUserLogout"
+                :user="user"
+              />
             </div>
           </div>
           <!-- Main content -->

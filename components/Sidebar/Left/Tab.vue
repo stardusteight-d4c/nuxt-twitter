@@ -13,7 +13,7 @@ const textClasses = computed(() =>
 <template>
   <next-link
     to="#"
-    :class="`${defaultTransition} border border-transparent hover:border-white-200 dark:hover:border-white/10 flex items-center py-2 px-3 w-full hover:bg-gray-200 dark:hover:bg-white/5 text-black dark:text-white rounded-full cursor-pointer`"
+    :class="`${defaultTransition} flex items-center py-2 px-3 w-full hover:bg-gray-200 dark:hover:bg-white/5 text-black dark:text-white rounded-full cursor-pointer`"
   >
     <div class="w-6 h-6">
       <slot name="icon"></slot>

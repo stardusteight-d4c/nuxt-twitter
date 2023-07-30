@@ -17,7 +17,7 @@ function emitsTweet() {
   <div class="h-screen flex flex-col pr-2">
     <nuxt-link
       to="/"
-      :class="`${defaultTransition} cursor-pointer border border-transparent hover:border-white-200 dark:hover:border-white/10 p-2 my-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/5 w-min`"
+      :class="`${defaultTransition} cursor-pointer p-2 my-2 rounded-full hover:bg-gray-200 dark:hover:bg-white/5 w-min`"
     >
       <div class="w-8 h-8 dark:text-white">
         <LogoTwitter />
@@ -88,7 +88,7 @@ function emitsTweet() {
 
     <div
       @click="emits('onLogout')"
-      :class="`${defaultTransition} flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-100 dark:hover:bg-dim-800`"
+      :class="`${defaultTransition} flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-200 dark:hover:bg-white/5 text-black dark:text-white`"
     >
       <div class="flex flex-row">
         <img
