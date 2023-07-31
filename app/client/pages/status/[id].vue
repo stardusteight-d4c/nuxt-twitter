@@ -9,29 +9,31 @@ function getTweetIdFromRouter() {
   return useRoute().params.id as string
 }
 
-watch(
-  () => useRoute().fullPath,
-  () => getTweet()
-)
-
-async function getTweet() {
-  loading.value = true
-  try {
-    const response: any = await getTweetById(getTweetIdFromRouter())
-    tweet.value = response.tweet
-  } catch (error) {
-    console.error(error)
-  } finally {
-    loading.value = false
+onMounted(() => {
+  async function getTweet() {
+    loading.value = true
+    try {
+      const response: any = await getTweetById(getTweetIdFromRouter())
+      tweet.value = response.tweet
+    } catch (error) {
+      console.error(error)
+    } finally {
+      loading.value = false
+    }
   }
-}
-getTweet()
+  getTweet()
+
+  watch(
+    () => useRoute().fullPath,
+    () => getTweet()
+  )
+})
 </script>
 
 <template>
   <UIFragment v-if="tweet?.text">
     <Head>
-      <Title>Twitter / {{ tweet?.text ?? '' }}</Title>
+      <Title>Twitter / {{ tweet?.text ?? "" }}</Title>
     </Head>
     <LayoutMain>
       <MainSection title="Tweet" :loading="loading">

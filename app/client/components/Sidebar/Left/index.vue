@@ -13,7 +13,7 @@ const { defaultTransition } = useTailwindConfig()
 
 <template>
   <div class="hidden md:block xs:col-span-1 xl:col-span-2">
-    <div class="sticky top-0">
+    <div class="fixed top-0">
       <div class="h-screen flex flex-col pr-2">
         <nuxt-link
           to="/"

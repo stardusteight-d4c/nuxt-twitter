@@ -1,21 +1,13 @@
 <script setup lang="ts">
 const { useAuthUser, useAuthLoading } = useAuth()
 const user = useAuthUser() as unknown as any
-const {
-  closePostTweetModal,
-  openPostTweetModal,
-  usePostTweetModal,
-  useReplyTweet,
-} = useTweets()
+const { closePostTweetModal, usePostTweetModal, useReplyTweet } = useTweets()
+
 const { twitterBorderColor } = useTailwindConfig()
 const isAuthLoading = useAuthLoading()
 const postTweetModal = usePostTweetModal()
-const emitter = useEmitter()
-const replyTweet = useReplyTweet()
 
-emitter.$on("replyTweet", (tweet: any) => {
-  openPostTweetModal(tweet)
-})
+const replyTweet = useReplyTweet()
 
 const changeRouteCondition = () => {
   if (!user.value && !isAuthLoading.value) {
@@ -30,17 +22,24 @@ watch(() => user.value, changeRouteCondition)
 </script>
 
 <template>
-  <UIFragment class="wrapper">
+  <UIFragment class="min-h-screen">
     <LoadingPage v-if="isAuthLoading" />
     <div v-if="!isAuthLoading && user">
-      <div class="grid-container">
+      <div
+        class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-1"
+      >
+        <!-- Tirar user e denpendência -->
         <SidebarLeft :user="user" />
-        <main :class="twitterBorderColor" class="main-content">
+        <main
+          :class="twitterBorderColor"
+          class="col-span-12 mb-20 md:col-span-8 xl:col-span-6 h-full border-x"
+        >
           <slot />
         </main>
         <SidebarRight />
       </div>
       <UIModal :isOpen="postTweetModal" @onClose="() => closePostTweetModal()">
+        <!-- Tirar user e replyTweet de denpendências -->
         <TweetForm
           showReply
           :user="user"
@@ -53,17 +52,3 @@ watch(() => user.value, changeRouteCondition)
     </div>
   </UIFragment>
 </template>
-
-<style scoped lang="postcss">
-.wrapper {
-  @apply min-h-screen;
-}
-
-.grid-container {
-  @apply grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-1;
-}
-
-.main-content {
-  @apply col-span-12 md:col-span-8 xl:col-span-6 h-full border;
-}
-</style>

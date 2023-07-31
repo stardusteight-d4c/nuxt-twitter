@@ -32,7 +32,7 @@ function handleFormSuccess(tweet: any) {
     </Head>
     <LayoutMain>
       <MainSection title="Home" :loading="loading">
-        <div :class="`${twitterBorderColor} wrapper`">
+        <div :class="`${twitterBorderColor} border-b`">
           <TweetForm
             v-if="user"
             :user="user"
@@ -45,9 +45,3 @@ function handleFormSuccess(tweet: any) {
     </LayoutMain>
   </UIFragment>
 </template>
-
-<style scoped lang="postcss">
-.wrapper {
-  @apply border-b;
-}
-</style>

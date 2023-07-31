@@ -34,13 +34,11 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-  background: #000000;
+  @apply w-1 h-1 bg-black;
 }
 
 ::-webkit-scrollbar-thumb {
   cursor: pointer;
   border-radius: 50px;
-  background: #ffffff;
+  background: #3b82f6;
 }

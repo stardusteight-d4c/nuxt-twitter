@@ -15,14 +15,8 @@ emitter.$on("toggle_dark_mode", () => {
 
 <template>
   <div :class="{ dark: darkMode }">
-    <div class="wrapper">
+    <div class="bg-background-light dark:bg-background-dark min-h-screen">
       <NuxtPage :key="path" />
     </div>
   </div>
 </template>
-
-<style scoped lang="postcss">
-.wrapper {
-  @apply bg-background-light dark:bg-background-dark;
-}
-</style>

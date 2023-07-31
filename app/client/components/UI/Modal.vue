@@ -5,6 +5,10 @@ import {
   Dialog,
   DialogPanel,
 } from "@headlessui/vue"
+const {
+  openPostTweetModal,
+} = useTweets()
+
 
 interface Props {
   isOpen: boolean
@@ -12,10 +16,14 @@ interface Props {
 
 const props = defineProps<Props>()
 const emits = defineEmits(["onClose"])
-
+const emitter = useEmitter()
 function closeModal() {
   emits("onClose")
 }
+
+emitter.$on("replyTweet", (tweet: any) => {
+  openPostTweetModal(tweet)
+})
 </script>
 
 <template>
