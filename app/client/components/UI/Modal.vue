@@ -1,25 +1,25 @@
-<script setup lang='ts'>
+<script setup lang="ts">
 import {
-    TransitionRoot,
-    TransitionChild,
-    Dialog,
-    DialogPanel,
-} from '@headlessui/vue'
+  TransitionRoot,
+  TransitionChild,
+  Dialog,
+  DialogPanel,
+} from "@headlessui/vue"
 
 interface Props {
   isOpen: boolean
 }
 
 const props = defineProps<Props>()
-const emits = defineEmits(['onClose'])
+const emits = defineEmits(["onClose"])
 
 function closeModal() {
-    emits('onClose')
+  emits("onClose")
 }
 </script>
 
 <template>
-  <!-- <TransitionRoot appear :v-if="props.isOpen" as="template">
+  <TransitionRoot :show="props.isOpen" appear  as="template">
     <Dialog as="div" @close="closeModal" class="relative z-10">
       <TransitionChild
         as="template"
@@ -55,5 +55,5 @@ function closeModal() {
         </div>
       </div>
     </Dialog>
-  </TransitionRoot> -->
+  </TransitionRoot>
 </template>

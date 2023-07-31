@@ -2,8 +2,7 @@
 const { initAuth } = useAuth()
 const emitter = useEmitter()
 const darkMode = ref(true)
-const route = useRoute()
-const path = ref(route.fullPath)
+const path = ref(useRoute().fullPath)
 
 onBeforeMount(() => {
   initAuth()

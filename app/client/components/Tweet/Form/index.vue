@@ -7,12 +7,20 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emits = defineEmits(["onSuccess"])
+
+const { closePostTweetModal } = useTweets()
 
 const replyTo = props.replyTo ?? null
 const showReply = props.showReply ?? false
 const { postTweet } = useTweets()
 const loading = ref<boolean>(false)
+
+function handleFormSuccess(tweet: any) {
+  closePostTweetModal()
+  navigateTo({
+    path: `/status/${tweet.id}`,
+  })
+}
 
 async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
   loading.value = true
@@ -22,7 +30,7 @@ async function handleFormSubmit(data: { text: string; mediaFiles: [File] }) {
       mediaFiles: data.mediaFiles,
       replyTo: replyTo?.id,
     })
-    emits("onSuccess", response.tweet)
+    handleFormSuccess(response.tweet)
   } catch (error) {
     console.error(error)
   } finally {

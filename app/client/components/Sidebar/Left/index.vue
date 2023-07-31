@@ -4,13 +4,11 @@ interface Props {
 }
 
 const props = defineProps<Props>()
-const emits = defineEmits(["onTweet", "onLogout"])
+
+const { openPostTweetModal } = useTweets()
+const { logout } = useAuth()
 
 const { defaultTransition } = useTailwindConfig()
-
-function emitsTweet() {
-  emits("onTweet")
-}
 </script>
 
 <template>
@@ -77,10 +75,12 @@ function emitsTweet() {
           </SidebarLeftTab>
 
           <div class="hidden xl:block">
-            <UIButton size="lg" liquid @click="emitsTweet"> Tweet </UIButton>
+            <UIButton size="lg" liquid @click="() => openPostTweetModal(null)">
+              Tweet
+            </UIButton>
           </div>
           <div class="block xl:hidden w-fit px-3">
-            <UIButton type="icon" @click="emitsTweet">
+            <UIButton type="icon" @click="() => openPostTweetModal(null)">
               <div class="w-6 h-6 p-1 font-bold dark:text-white">
                 <LogoTwitter />
               </div>
@@ -89,7 +89,7 @@ function emitsTweet() {
         </div>
 
         <div
-          @click="emits('onLogout')"
+          @click="() => logout()"
           :class="`${defaultTransition} flex flex-row items-center justify-center px-2 py-2 mx-auto mt-auto mb-5 rounded-full cursor-pointer w-14 xl:w-full hover:bg-gray-200 dark:hover:bg-white/5 text-black dark:text-white`"
         >
           <div class="flex flex-row">
