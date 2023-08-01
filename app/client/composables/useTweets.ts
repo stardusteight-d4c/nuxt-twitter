@@ -44,6 +44,8 @@ export default () => {
           method: "GET",
           params,
         })
+        console.log('response getTweets', response);
+        
         resolve(response)
       } catch (error) {
         reject(error)

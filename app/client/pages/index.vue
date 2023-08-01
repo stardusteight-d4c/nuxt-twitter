@@ -2,23 +2,30 @@
 const { useAuthUser } = useAuth()
 const { twitterBorderColor } = useTailwindConfig()
 const { getTweets } = useTweets()
-const homeTweets = ref([])
-const loading = ref(false)
+const homeTweets = ref<ITweet[]>([])
+const loading = ref(true)
 const user = useAuthUser() as unknown as User
+const revalidate = 1000 // 1sec
 
-onBeforeMount(async () => {
-  loading.value = true
-  try {
-    const { tweets } = (await getTweets()) as any
-    homeTweets.value = tweets
-  } catch (error) {
-    console.error(error)
-  } finally {
+setInterval(() => {
+  if (homeTweets.value.length <= 0) {
+    ;(async () => {
+      loading.value = true
+      try {
+        const { tweets } = (await getTweets()) as { tweets: ITweet[] }
+        homeTweets.value = tweets
+      } catch (error) {
+        console.error(error)
+      } finally {
+        loading.value = false
+      }
+    })()
+  } else {
     loading.value = false
   }
-})
+}, revalidate)
 
-function handleFormSuccess(tweet: any) {
+function handleFormSuccess(tweet: ITweet) {
   navigateTo({
     path: `/status/${tweet.id}`,
   })
@@ -40,7 +47,13 @@ function handleFormSuccess(tweet: any) {
             placeholder="What's happening?"
           />
         </div>
-        <TweetListFeed :tweets="homeTweets" />
+        <div
+          v-if="loading"
+          class="min-h-full flex items-center justify-center p-4 mt-10"
+        >
+          <UISpinner />
+        </div>
+        <TweetListFeed v-else :tweets="homeTweets" />
       </MainSection>
     </LayoutMain>
   </UIFragment>
