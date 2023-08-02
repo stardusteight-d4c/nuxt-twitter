@@ -7,23 +7,25 @@ const loading = ref(true)
 const user = useAuthUser() as unknown as User
 const revalidate = 1000 // 1sec
 
-setInterval(() => {
-  if (homeTweets.value.length <= 0) {
-    ;(async () => {
-      loading.value = true
-      try {
-        const { tweets } = (await getTweets()) as { tweets: ITweet[] }
-        homeTweets.value = tweets
-      } catch (error) {
-        console.error(error)
-      } finally {
-        loading.value = false
-      }
-    })()
-  } else {
-    loading.value = false
-  }
-}, revalidate)
+onBeforeMount(() => {
+  setInterval(() => {
+    if (homeTweets.value.length <= 0) {
+      ;(async () => {
+        loading.value = true
+        try {
+          const { tweets } = (await getTweets()) as { tweets: ITweet[] }
+          homeTweets.value = tweets
+        } catch (error) {
+          console.error(error)
+        } finally {
+          loading.value = false
+        }
+      })()
+    } else {
+      loading.value = false
+    }
+  }, revalidate)
+})
 
 function handleFormSuccess(tweet: ITweet) {
   navigateTo({
