@@ -2,20 +2,22 @@
 const { getTweets: getTweetsComposable } = useTweets()
 const loading = ref(false)
 const searchTweets = ref([])
-const searchQuery = useRoute().query.q
 
-// watch(
-//   () => useRoute().fullPath,
-//   () => getTweets()
-// )
+watch(
+  () => useRoute().fullPath,
+  () => getTweets()
+)
 
 onBeforeMount(async () => {
   getTweets()
 })
 
 async function getTweets() {
+  const searchQuery = useRoute().query.q
   loading.value = true
   try {
+    console.log("searchQuery", searchQuery)
+
     const { tweets } = (await getTweetsComposable({
       query: searchQuery,
     })) as any
