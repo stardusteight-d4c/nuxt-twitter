@@ -23,7 +23,7 @@ async function handleLogin() {
     <span class="text-blue-400 hover:underline cursor-pointer">
       Create account
     </span>
-    <div class="pt-5 space-y-6">
+    <div class="pt-5 space-y-6 text-black dark:text-white">
       <UIInput
         label="Username"
         placeholder="@username"

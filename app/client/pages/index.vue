@@ -6,10 +6,11 @@ const homeTweets = ref<ITweet[]>([])
 const loading = ref(true)
 const user = useAuthUser() as unknown as User
 const revalidate = 1000 // 1sec
+let countRequest = 0
 
 onBeforeMount(() => {
-  setInterval(() => {
-    if (homeTweets.value.length <= 0) {
+  let intervalId = setInterval(() => {
+    if (homeTweets.value.length <= 0 && countRequest <= 2) {
       ;(async () => {
         loading.value = true
         try {
@@ -18,11 +19,13 @@ onBeforeMount(() => {
         } catch (error) {
           console.error(error)
         } finally {
+          countRequest++
           loading.value = false
         }
       })()
     } else {
       loading.value = false
+      clearInterval(intervalId) 
     }
   }, revalidate)
 })
