@@ -20,9 +20,9 @@ const { twitterBorderColor } = useTailwindConfig()
       />
     </div>
     <div
-      class="flex flex-col justify-center px-4 py-12 col-span-3 sm:px-6 lg:px-20 xl:px-24"
+      class="flex flex-col h-screen overflow-y-scroll justify-center px-4 py-12 col-span-3 sm:px-6 md:pl-16"
     >
-      <div class="flex items-center w-full h-full mx-auto lg:w-96">
+      <div class="flex items-center  mx-auto lg:w-96">
         <AuthForm />
       </div>
     </div>
