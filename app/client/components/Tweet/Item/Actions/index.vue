@@ -17,7 +17,7 @@ function generateRandomNumber() {
 
 <template>
   <div
-    class="flex items-center justify-around xl:justify-normal xl:gap-x-[80px] w-full"
+    class="flex items-center justify-between w-full"
   >
     <TweetItemActionsIcon
       @on-click="emits('onCommentClick')"

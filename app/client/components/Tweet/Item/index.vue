@@ -32,11 +32,18 @@ const textSize = computed(() => (compact ? "text-base" : "text-2xl"))
       <div
         v-for="image in tweet.mediaFiles"
         :key="image.id"
-        :class="`${twitterBorderColor} flex my-3 mr-2 border-b-2 rounded-2xl overflow-hidden`"
+        :class="`${twitterBorderColor} ${
+          !compact ? 'mr-2 block' : 'max-w-[500px]'
+        } flex my-3 border-b-2 rounded-2xl overflow-hidden`"
       >
         <img :src="image.url" class="w-full bg-cover rounded-2xl" />
       </div>
-      <div class="mt-2" v-if="!hideActions">
+      <div
+        :class="`${
+          !compact ? 'w-full' : 'max-w-[500px]'
+        } mt-2 flex items-center justify-center`"
+        v-if="!hideActions"
+      >
         <TweetItemActions
           :tweet="tweet"
           :compact="compact"

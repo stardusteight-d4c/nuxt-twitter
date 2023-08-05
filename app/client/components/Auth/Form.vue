@@ -8,6 +8,7 @@ const signInData = reactive({
 const signUpData = reactive({
   name: "",
   username: "",
+  profileImage: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -15,10 +16,10 @@ const signUpData = reactive({
 })
 
 async function handleSignIn() {
-  const { login } = useAuth()
+  const { signin } = useAuth()
   signInData.loading = true
   try {
-    await login({
+    await signin({
       username: signInData.username,
       password: signInData.password,
     })
@@ -30,15 +31,15 @@ async function handleSignIn() {
 }
 
 async function handleSignUp() {
-  // const { login } = useAuth()
-  // data.loading = true
-  // try {
-  //   await login({ username: data.username, password: data.password })
-  // } catch (error) {
-  //   console.error(error)
-  // } finally {
-  //   data.loading = false
-  // }
+  const { signup } = useSignUp()
+  signUpData.loading = true
+  try {
+    await signup(signUpData, loginType)
+  } catch (error) {
+    console.error(error)
+  } finally {
+    signUpData.loading = false
+  }
 }
 </script>
 
@@ -89,6 +90,11 @@ async function handleSignUp() {
           label="Username"
           placeholder="@username"
           v-model="signUpData.username"
+        />
+        <UIInput
+          label="Profile Image URL"
+          placeholder="https://storage.com/myavatarimage.png"
+          v-model="signUpData.profileImage"
         />
         <UIInput
           label="Email"

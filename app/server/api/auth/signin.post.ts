@@ -1,11 +1,11 @@
 import { compare } from "bcrypt"
-import { Login, getUserByUsername } from "../../db/users"
+import { SigIn, getUserByUsername } from "../../db/users"
 import { userTransformer } from "../../transformers/user"
 import { generateTokens } from "../../utils/jwt"
 import { createRefreshToken } from "../../db/refreshTokens"
 
 export default defineEventHandler(async (event) => {
-  const body: Login = await readBody(event)
+  const body: SigIn = await readBody(event)
   const { username, password } = body
   if (!username || !password) {
     return sendError(

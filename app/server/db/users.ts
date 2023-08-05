@@ -9,7 +9,7 @@ export interface User {
   profileImage: string
 }
 
-export interface Login {
+export interface SigIn {
   username: string
   password: string
 }

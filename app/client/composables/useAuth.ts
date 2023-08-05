@@ -26,10 +26,10 @@ export default () => {
     authLoading.value = newLoading
   }
 
-  const login = ({ username, password }: LoginData) => {
+  const signin = ({ username, password }: LoginData) => {
     return new Promise(async (resolve, reject) => {
       try {
-        const data = await $fetch("/api/auth/login", {
+        const data = await $fetch("/api/auth/signin", {
           method: "POST",
           body: {
             username,
@@ -116,5 +116,5 @@ export default () => {
     })
   }
 
-  return { login, logout, useAuthUser, useAuthToken, useAuthLoading, initAuth }
+  return { signin, logout, useAuthUser, useAuthToken, useAuthLoading, initAuth }
 }
