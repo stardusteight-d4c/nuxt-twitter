@@ -3,7 +3,7 @@
 </div>
 
 <h1 align="center">
-   Twitter, Twitter Feed
+   Twitter, Make Tweets
 </h1>
 
 This project is a web application developed with the aim of improving knowledge in specific frontend and backend technologies. The application aims to replicate the interface of two main Twitter pages: the posts feed and the login page.
