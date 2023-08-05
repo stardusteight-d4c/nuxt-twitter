@@ -16,7 +16,7 @@ To handle communication between components, the application uses the Mitt librar
 
 API routes are created using the Nuxt.js API Routes functionality, allowing communication between the frontend and the backend. The Transformers pattern is used to transform data before being sent to the client, allowing formatting and filtering of information before displaying it in the interface.
 
-For interaction with the SQL database, the project uses the Prisma tool, which facilitates the creation of database schemas through declarative language and allows queries to be carried out in a more intuitive way.
+For interaction with the NO SQL database, the project uses the Prisma tool, which facilitates the creation of database schemas through declarative language and allows queries to be carried out in a more intuitive way.
 
 For form data analysis, especially file uploads, the project uses the Formidable library, simplifying the processing of data sent by forms.
 
