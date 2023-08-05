@@ -53,6 +53,7 @@ const data = {
       </div>
       <div class="w-full p-2">
         <textarea
+          :spellcheck="false"
           v-model="text"
           :placeholder="placeholder"
           :class="`${twitterBorderColor} focus:!border-blue-400 rounded-xl w-full min-h-[125px] p-2 text-lg resize-none outline-none text-gray-900 placeholder:text-gray-400 bg-transparent border dark:text-white focus:ring-0`"

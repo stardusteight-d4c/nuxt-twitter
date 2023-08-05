@@ -28,7 +28,6 @@ watch(() => user.value, changeRouteCondition)
       <div
         class="grid grid-cols-12 mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:gap-1"
       >
-        <!-- Tirar user e denpendência -->
         <SidebarLeft :user="user" />
         <main
           :class="twitterBorderColor"
@@ -39,7 +38,6 @@ watch(() => user.value, changeRouteCondition)
         <SidebarRight />
       </div>
       <UIModal :isOpen="postTweetModal" @onClose="() => closePostTweetModal()">
-        <!-- Tirar user e replyTweet de denpendências -->
         <TweetForm
           showReply
           :user="user"

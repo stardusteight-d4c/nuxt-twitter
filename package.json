@@ -23,10 +23,8 @@
     "typescript": "^5.1.6"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.7.15",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@prisma/client": "^5.0.0",
-    "@tailwindcss/forms": "^0.5.4",
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.39.0",
     "formidable": "^3.5.0",
