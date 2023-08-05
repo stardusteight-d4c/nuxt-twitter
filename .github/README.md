@@ -47,163 +47,121 @@ In short, the project is a combination of modern frontend and backend technologi
 * Formidable Library (for parsing form data, especially file uploads)
 * Cloudinary
 * Json Web Tokens
-* Access/Refresh tokens
+* Access and Refresh tokens authentication strategy 
 
 ## :mailbox_with_mail: Utilities
  
-### <strong>Clean Architecture</strong>
- 
-Clean Architecture is a software architecture pattern that proposes a source code structure in layers, with the objective of separating responsibilities and making the software more testable, scalable and easy to maintain.
+### <strong>Composables Vs. Hooks</strong>
 
-The core idea of Clean Architecture is that the business rules (core) of the software must be independent of any external technology (such as frameworks, databases, user interfaces, etc.), to ensure their integrity and reuse in different contexts.
+Composables in Vue.js can be compared to Hooks in React in terms of purpose and functionality. Both features aim to facilitate the reuse of logic in components, improving code composition and modularity.
 
-For this, the architecture proposes the definition of well-defined layers, which are:
+While the implementations differ between Vue.js and React, both Composables and Hooks provide a way to extract logic from individual components into reusable functions.
 
-1. <strong>Entity Layer (Domain)</strong>: represents the domain entities, that is, the system's business rules;
-2. <strong>Layer of Use Cases (Application)</strong>: implements the use cases of the system, which are specific actions of the software that manipulate the entities of the domain;
-3. <strong>Infrastructure Layer</strong>: This is responsible for handling communication with the outside world, such as databases, file systems, networks, etc.
+Composables are an important part of the Vue.js Composition API, introduced in version 3 of the framework. They allow you to reuse logic and functionality in different components, making the code more modular, readable and maintainable.
 
-In addition, the architecture proposes the use of SOLID and DDD (Domain Driven Design) principles to ensure that the code is cohesive, properly coupled and easy to maintain.
+The Composition API is a new way of defining logic in a Vue.js component that offers greater flexibility and organization compared to the Options API-based approach used in previous versions of Vue.js.
 
-Clean Architecture is a concept that can be applied in different programming languages ​​and frameworks, and is widely used in software projects that require high quality, scalability and maintenance.
+`Composables are functions that encapsulate the logic of a component and can be used anywhere in the component or even in other components`. The idea behind Composables is to separate component logic from its template structure, allowing different components to share the same logic easily and without code duplication.
 
-### <strong>Domain-Driven Design</strong>
- 
-Domain-driven design (DDD) is a software development approach that places the business domain at the core of system modeling. It was proposed by Eric Evans in 2003 and aims to help create systems that are more flexible and adaptable to business changes.
+Here are some key concepts about Composables and their importance:
 
-DDD suggests creating a rich domain model that clearly reflects business rules and domain expert knowledge. This is done through collaboration between developers and domain experts so that the domain model is created together to ensure it reflects the needs of the business.
+1. Logic reuse: By creating Composables, you can isolate and reuse specific blocks of logic across multiple components. This leads to cleaner, more organized code and easier maintenance since changes to logic only need to be made in one place.
 
-On the other hand, clean architecture is a software architecture approach that values the separation of responsibilities in well-defined layers, ensuring greater modularity, testability and code reuse. Clean architecture proposes that business rules should be the heart of the system and should be isolated from technical concerns such as infrastructure and framework.
+2. Separation of concerns: By using Composables, you separate the component logic from your template structure. This helps maintain clarity and makes the components easier to understand, as each piece of code has a clear responsibility.
 
-Thus, there is a relationship between DDD and clean architecture, as both approaches emphasize the importance of business rules in software development. DDD emphasizes creating a rich domain model, while clean architecture proposes a modular architecture that prioritizes separation of responsibilities and technology independence.
+3. Modularity: The Composables approach allows you to divide the component's logic into small parts, each responsible for a specific task. This makes it easy to organize and assemble these parts to create more complex components.
 
-In this way, clean architecture can be used as a framework for implementing DDD, as it provides a way to organize code to reflect the structure of the business domain. The clean architecture allows business rules to be implemented in a layer separate and independent of other technical layers, which helps ensure that the domain model is clear and maintainable.
+4. Ease of Testing: By having isolated logics in Composables, it is easier to write unit tests for these functions, as they can be tested independently of the components.
 
-### <strong>Hygraph and E-Commerce Security</strong>
+5. Less Coupling: Composables help reduce coupling between components, making the application more flexible and allowing parts of the code to be changed without affecting other parts.
 
-The server through which the page is processed, as well as the customer acquire the product information through a common source, in this case I chose to use Hygraph which is a Headless CMS (Content Management System), which is a great option for manage the content of a website if you don't want to waste time implementing the entire interface, backend, as well as the database.
+Example of a Composable:
 
-> *Process and acquire data entirely through the backend, rely as little as possible on information coming from the client side*
- 
-In common applications we are used to sending all the data that the backend needs to do the proper processing, as we already process this information on the client side to show the consumer the purchase/checkout information and the product itself, we could think of sending these information for the backend to process properly, however the client, the web page must behave only as an interface, an intermediary that sends the information of operations that the user wants to carry out. Otherwise sensitive information can be intercepted and even altered by the front-end, and thus the data that would arrive at the backend would no longer maintain an integrity, or a reliability factor.
+```javascript
+// useCounter.js (exemplo de um Composable)
+import { ref } from 'vue';
 
-So the solution to avoid manipulation of purchase data and avoid fraud was to make the customer send only the ID and Quantity of the product to the backend, that is, the backend now only depends on this information to process all the data purchase, acquiring the product data from a reliable source, from Hygraph itself, the application's Headless CMS.
+export function useCounter(initialValue) {
+  const count = ref(initialValue);
 
-```ts
-// server/src/infra/http/graphql/queries.ts
+  function increment() {
+    count.value++;
+  }
 
-import dotenv from "dotenv";
+  function decrement() {
+    count.value--;
+  }
 
-dotenv.config();
-
-export const getProductById = async (ids: string[]) => {
-  const products = await fetch(process.env.CMS_API_URL!, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.HYGRAPH_API_ACCESS_TOKEN}`,
-    },
-    body: JSON.stringify({
-      query: `
-      query getProductById($ids: [ID]) {
-        products(where: { id_in: $ids }) {
-          id
-          title
-          stock
-          img {
-            url
-          }
-          price
-        }
-      }
-      `,
-      variables: {
-        ids,
-      },
-    }),
-  })
-    .then((res) => res.json())
-    .then((result) => result.data.products)
-    .catch((error) => console.log(error));
-
-  return products;
-};
-```
-
-### <strong>Absolute Imports</strong>
-
-Absolute Imports is a technique for importing modules into a project that allows you to reference the files from the root of the project directory, rather than using a path relative to the file being imported.
-
-For example, instead of using import foo from '../../../components/foo' to import a component "foo" that is located in a directory 3 levels up, we can use import foo from '@/components /foo', where "@" is an alias representing the root of the project directory.
-
-This makes imports simpler and less error-prone, as the absolute path doesn't change no matter where the source file is located. In addition, it also facilitates project refactoring as it is not necessary to manually update all imports of a given file when it is moved to a new folder.
-
-Absolute Imports are common in larger projects and can be configured in different build tools and module systems such as Webpack and TypeScript.
-
-```ts
-// With Absolute Imports
-import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { openCart, selectCartTotalQuantity } from '@/store/slices/CartSlice'
-import { selectCurrentConsumer } from '@/store/slices/ConsumerSlice'
-
-// Without Absolute Imports
-import { useAppDispatch, useAppSelector } from '../../../../store/hooks'
-import { openCart, selectCartTotalQuantity } from '../../../../store/slices/CartSlice'
-import { selectCurrentConsumer } from '../../../../store/slices/ConsumerSlice'
-```
-
-This application uses Vite + Typescript, so to add the desired absolute paths you need to add the paths property in the tsconfig.json file:
-
-```json
-{
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"],
-      "@components/*": ["src/components/*"],
-      "@store/*": ["src/store/*"],
-      "@core/*": ["src/core/*"],
-      "@assets/*": ["src/assets/*"]
-    },
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  return {
+    count,
+    increment,
+    decrement,
+  };
 }
 ```
 
-Vite, however, will not understand imports, so we can install a plugin called vite-tsconfig-paths to give vite the ability to resolve imports using TypeScript path mapping.
+In this example, we create a Composable called `useCounter`, which encapsulates the counting logic. It has an internal state called `count`, as well as `increment` and `decrement` functions to manipulate that state.
 
-```ts
-// web/vite.config.ts
+By using this Composable in a Vue.js component, you can easily reuse the counting functionality without having to rewrite the logic. This simplifies the component's code and makes development more efficient.
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
-import tsconfigPaths from 'vite-tsconfig-paths'
+In short, Composables are a powerful abstraction that makes Vue.js development more modular, reusable, and organized. They play a key role in the Composition API and are highly recommended for Vue.js projects, especially in scenarios where logic reuse is required.
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
-})
-```
 
-![screen](./screenshots/tweet-modal.png)
+### <strong>Transformers Pattern</strong>
+
+The Transformers Pattern is a design pattern that aims to transform data before it is sent to the client or after it is received from the server. This transformation can include formatting, filtering, mapping and any other manipulation of the data to adapt it to the format desired by the application.
+
+The Transformers pattern is commonly used in applications that consume APIs or external services, where incoming data may come in a different format than what is best suited for display in the UI. It allows separating data transformation logic from presentation logic, ensuring better code organization and making maintenance easier.
+
+The Transformers pattern can be applied to both the frontend and the backend, depending on the specific needs of the project.
+
+- Frontend:
+
+On the frontend, Transformers are often used in conjunction with API calls to format incoming data before being used in the frontend. This can include normalizing data, converting formats, handling null or undefined values, and other manipulations.
+
+For example, consider a scenario where the API returns a user's data in a specific format, and you want to map that data to a more suitable format for use in a Vue.js component. In this case, you can create a Transformer function that takes the raw data from the API as input and returns the formatted data as needed by the component.
+
+- Backend:
+
+On the backend, Transformers can be used to format the data before sending it to the client in response to a request. This transformation can be useful to ensure that data is delivered in accordance with the API contract or in a standardized format for all responses.
+
+For example, if you are building an API that returns data from a database using an ORM (Object-Relational Mapping) such as Prisma, the data from the database can be mapped to a specific format using a Transformer before being sent to the client.
+
+The overall goal of the Transformers Pattern is to encapsulate data transformation logic in reusable functions or classes, making the code more modular and flexible. This allows you to easily change the way data is handled without affecting the application's presentation logic or business logic.
+
+In summary, the Transformers Pattern is an approach to transforming data before it is used in the application, either on the frontend or the backend. It helps separate concerns around data formatting and manipulation, improving code organization and transformation logic reuse.
+
+
+### <strong>Access and Refresh tokens authentication strategy</strong>
+
+The authentication strategy with Access and Refresh tokens is a common approach used to authenticate users in web and mobile applications. This strategy aims to ensure security and the best user experience by allowing tokens to be renewed without the need to log in again.
+
+Here is a detailed explanation of the authentication strategy with Access and Refresh tokens:
+
+1. Access Token:
+   - The Access Token is a short-lived token that is issued by the authentication server (usually using JWT - JSON Web Tokens) after the user has successfully logged in.
+   - This token contains authenticated user information such as user identification (ID), permissions and other relevant details.
+   - The Access Token is used to authorize requests made by the client (frontend) to the server (backend). The client must include the Access Token in each request to access protected resources on the server.
+   - The Access Token has a short validity, usually from a few minutes to hours. This short validity increases security, since, if the token is compromised, its use will be limited in time.
+
+2. Refresh Token:
+   - The Refresh Token is a long-lived token that is issued along with the Access Token upon successful login.
+   - The main function of the Refresh Token is to allow the customer to renew the Access Token without the need to login again. This improves the user experience, as it avoids the user having to provide his credentials with each token renewal.
+   - The Refresh Token is not sent in each request to the server. It is stored securely on the client (usually in a secure cookie or local storage), and is only used when the Access Token expires.
+   - When the Access Token expires, the client makes a request to the server to renew the token. The server verifies that the Refresh Token is valid and, if so, issues a new Access Token, allowing the client to continue accessing protected resources.
+
+3. Authentication flow:
+   - The authentication flow using Access and Refresh tokens usually follows these steps:
+      1. The client makes a login request to the server, providing its credentials (such as username and password).
+      2. The server checks the credentials and, if correct, issues an Access Token and Refresh Token in response.
+      3. The client stores the Refresh Token securely and uses the Access Token to access protected resources on the server.
+      4. When the Access Token expires (usually defined in an "exp" header on the token), the client uses the Refresh Token to request a new Access Token.
+      5. The server checks if the Refresh Token is valid and, if so, issues a new Access Token to the client.
+      6. The client repeats the process of using the new Access Token to access protected resources.
+      7. This flow repeats as long as the Refresh Token remains valid and as long as the user is logged in.
+
+This authentication strategy is widely adopted as it is a secure and convenient approach to user authentication in web and mobile applications. It allows continuous renewal of tokens, keeping the user authenticated and protecting application resources against unauthorized access.
+
+![screen](./screenshots/home-full-page.png)
 
 <p align="center">Project made with :blue_heart: by <a href="https://github.com/stardusteight-d4c">Gabriel Sena</a></p>
-
-
-
-
-
-
-
-### @nuxtjs/tailwindcss resolve problemas de renderização dinamica com TailwindCSS entre outros
-
-Acessando mongodb no container docker
-```bash
-docker compose up
-docker compose exec mongodb bash
-mongo -u admin -p password --authenticationDatabase admin
-use db
-show collections
-db.nome_da_colecao.find()
-```
